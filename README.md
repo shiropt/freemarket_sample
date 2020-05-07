@@ -13,9 +13,12 @@
 
 
 ### Association
-  belongs_to :credit_card
-  belongs_to :profile
-  belongs_to :address
+  has_one :credit_card
+  has_one :profile
+  has_one :address
+  has_many :purchased_infos
+  has_many :items
+  has_many :comments
   
 
 
@@ -31,15 +34,9 @@
 
 ### Association
   belongs_to :user
-  belongs_to :prefecture
+  belongs_to_active_hash :prefecture
   
 
-
-
-# prefecturesテーブル
-|Column     |Type   |Options                                    |
-|-----------|-------|-------------------------------------------|
-|prefecture  |string|null: false,                   |
 
 ### Association
   has_many :address
@@ -49,16 +46,12 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
-|item_id|integer|null: false, foreign_key: true|
 |nickname|string|null: false|
 |image|string||
 |profile|text||
 
 Association
 belongs_to :user
-has_many :purchased_infos
-has_many :items
-has_many :comments
 
 ### credit_cardsテーブル
 |Column|Type|Options|
@@ -75,10 +68,10 @@ belongs_to :user
 |------|----|-------|
 |user_id|intger|null: false, foreign_key: true|
 |item_id|intger|null: false, foreign_key: true|
-|comment|text|     |
+|comment|text|null: false    |
 
 Association
-belongs_to :profile
+belongs_to :user
 belongs_to :item
 
 ### imagesテーブル
@@ -111,13 +104,13 @@ has_many :items
 ### purchased_infosテーブル
 |Column|Type|Options|
 |------|----|-------|
-|profile_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
 |purchase_date|date|null: false|
 
 Association
 belongs_to :item
-belongs_to :profile
+belongs_to :user_id
 
 ### itemsテーブル
 |Column|Type|Options|
@@ -133,12 +126,13 @@ belongs_to :profile
 |shipping_fee_side|boolean|null: false|
 |prefectures_id|integer|null: false, foreign_key: true|
 |shipping_days|integer||
+|user_id|integer|foreign_key: true|
 
 ### Association
-- belongs_to :profile
-- belongs_to :prefectur
+- belongs_to :user
+- belongs_to_active_hash :prefecture
 - belongs_to :brand
-- belongs_to :categorie
+- belongs_to :category
 - belongs_to :purchased_info
 - has_many :images
 - has_many :comments
