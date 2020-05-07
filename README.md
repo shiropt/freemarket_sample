@@ -125,12 +125,12 @@ belongs_to :profile
 |name|string|null: false|
 |description|text|null: false|
 |price|integer|null: false|
-|size|integer|null: false|
+|size|integer|         |
 |category_id|integer|null: false, foreign_key: true|
-|brand_id|integer|null: false, foreign_key: true|
+|brand_id|integer| foreign_key: true|
 |condition|string|null: false|
 |shipping_fee|integer|null: false|
-|shipping_fee_side|boolean||null: false|
+|shipping_fee_side|boolean|null: false|
 |prefectures_id|integer|null: false, foreign_key: true|
 |shipping_days|integer||
 
