@@ -38,10 +38,6 @@
   
 
 
-### Association
-  has_many :address
-  has_many :items
-
 ### profilesテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -110,7 +106,7 @@ has_many :items
 
 Association
 belongs_to :item
-belongs_to :user_id
+belongs_to :user
 
 ### itemsテーブル
 |Column|Type|Options|
