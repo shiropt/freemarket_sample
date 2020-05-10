@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root 'items#show.html.haml'
+  root 'items#show'
 end
