@@ -38,9 +38,15 @@ describe Address do
     end
 
     it "telephone_numberが英数以外の場合は登録できないこと" do
-      user = build(:address, telephone_number: "hogeほげ")
+      user = build(:address, telephone_number: "hogeほげ009")
       user.valid?
       expect(user).to_not match([0 - 9])
+    end
+
+    it "telephone_numberが無くても登録できること" do
+      user = build(:address, telephone_number: nil)
+      user.valid?
+      expect(user).to be_valid
     end
 
   end

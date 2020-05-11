@@ -9,5 +9,5 @@ class Address < ApplicationRecord
   validates :prefecture_id,              presence: true
   validates :city,                       presence: true
   validates :block,                      presence: true
-  validates :telephone_number,           numericality: { only_integer: true }
+  validates :telephone_number,           numericality: { only_integer: true }, allow_nil: true
 end
