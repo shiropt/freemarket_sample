@@ -2,52 +2,56 @@
 
 
 ## usersテーブル
-|Column      |Type    |Options                                     |
-|------------|--------|--------------------------------------------|
-|name        |string  |null: false,                     |
-|name_kana   |string  |null: false,                     |
-|email       |string  |null: false, unique: true                 |
-|gender      |integer |                   |
-|birth_day   |date    |null: false,                  |
-|password    |string  |null: false,               |
-
+|Column           |Type    |Options                          |
+|-----------------|--------|---------------------------------|
+|last_name        |string  |null: false                      |
+|first_name       |string  |null: false                      |
+|last_name_kana   |string  |null: false                      |
+|first_name_kana  |string  |null: false                      |
+|email            |string  |null: false, unique: true        |
+|gender           |integer |null: false                      |
+|birth_day        |date    |null: false                      |
+|password         |string  |null: false                      |
 
 ### Association
-  has_one :credit_card
-  has_one :profile
-  has_one :address
-  has_many :purchased_infos
-  has_many :items
-  has_many :comments
+- has_one :credit_card
+- has_one :profile
+- has_one :address
+- has_many :purchased_infos
+- has_many :items
+- has_many :comments
   
 
 
 ## addressテーブル
-|Column         |Type      |Options                                    |
-|---------------|--------|-------------------------------------------|
-|post_code      |integer |null: false                                           |
-|city           |string  |null: false                                           |
-|block          |string  |null: false                                           |
-|building       |string  |null: false                                           |
-|user_id        |integer |null: false, foreign_key: true             |
-|prefectures_id |integer |null: false, foreign_key: true             |
+|Column          |Type    |Options                            |
+|----------------|--------|-----------------------------------|
+|post_code       |integer |null: false                        |
+|prefectures_id  |integer |null: false, foreign_key: true     |
+|city            |string  |null: false                        |
+|block           |string  |null: false                        |
+|building        |string  |                                   |
+|telephone_number|integer |                                   |
+|user_id         |integer |null: false, foreign_key: true     |
 
 ### Association
-  belongs_to :user
-  belongs_to_active_hash :prefecture
+- belongs_to :user
+- belongs_to_active_hash :prefecture
   
 
 
-### profilesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|nickname|string|null: false|
-|image|string||
-|profile|text||
+## profilesテーブル
+|Column        |Type     |Options                            |
+|--------------|---------|-----------------------------------|
+|user_id       |integer  |null: false, foreign_key: true     |
+|nickname      |string   |null: false                        |
+|image         |string   |                                   |
+|profile       |text     |                                   |
 
-Association
-belongs_to :user
+### Association
+- belongs_to :user
+
+
 
 ### credit_cardsテーブル
 |Column|Type|Options|
