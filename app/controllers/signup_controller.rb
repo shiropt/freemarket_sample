@@ -16,6 +16,7 @@ class SignupController < ApplicationController
   end
 
   def step2
+    @user = User.new
     @user.build_address
   end
 
