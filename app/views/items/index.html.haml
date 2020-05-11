@@ -17,9 +17,9 @@
           ブランド
       %ul.lists-right
         %li.lists-right__login
-          = link_to "ログイン", "#", id: "link"
+          = link_to "ログイン", "#", class: "link"
         %li.lists-right__signup
-          = link_to "新規会員登録", "#", id: "link"
+          = link_to "新規会員登録", "#", class: "link"
 .main
   .main__top-banner
     .main__top-banner__content
@@ -32,9 +32,11 @@
         フリマアプリです
       .btn-wrapper
         .btn
-          %a{href: "https://apps.apple.com/us/app/google-chrome/id535886823?mt=8", style: "display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-us/badge-lrg.svg?releaseDate=2012-06-28&kind=iossoftware&bubble=ios_apps) no-repeat;width:180px;height:55px;margin-right:10px;background-size:contain;"}        
+          = link_to "#" do
+            = image_tag("/material/pict/apple-store-logo-4.png", id:"apple")
         .btn
-          = image_tag("/material/pict/google-play-badge.png")
+          = link_to "#" do
+            = image_tag("/material/pict/google-play-badge.png")
   .main__reason
     %h2.head
       FURIMAが選ばれる3つの理由
@@ -60,7 +62,7 @@
       %li.list.list--last
         .list__pict
           %span.number 3
-          = image_tag("/material/pict/pict-reason-03.jpg", class: "pict")
+          = image_tag("/material/pict/pict-reason-03.jpg", class:"pict")
         %h3.list__text
           手数料
           %span 業界最安
@@ -78,9 +80,11 @@
         ほしかったあの商品に出会えるかもしれません。
       .btn-wrapper
         .btn
-          %a{href: "https://apps.apple.com/us/app/google-chrome/id535886823?mt=8", style: "display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-us/badge-lrg.svg?releaseDate=2012-06-28&kind=iossoftware&bubble=ios_apps) no-repeat;width:180px;height:55px;margin-right:10px;background-size:contain;"}        
+          = link_to "#" do
+            = image_tag("/material/pict/apple-store-logo-4.png", id:"apple")
         .btn
-          = image_tag("/material/pict/google-play-badge.png")
+          = link_to "#" do
+            = image_tag("/material/pict/google-play-badge.png")
   .main__feature
     %h2.head FURIMAの特徴
     .lists
@@ -128,39 +132,40 @@
         今すぐ無料ダウンロード！
       .btn-wrapper
         .btn
-          %a{href: "https://apps.apple.com/us/app/google-chrome/id535886823?mt=8", style: "display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-us/badge-lrg.svg?releaseDate=2012-06-28&kind=iossoftware&bubble=ios_apps) no-repeat;width:180px;height:55px;margin-right:10px;background-size:contain;"}        
+          = link_to "#" do
+            = image_tag("/material/pict/apple-store-logo-4.png", id:"apple")
         .btn
-          = image_tag("/material/pict/google-play-badge.png")
-
+          = link_to "#" do
+            = image_tag("/material/pict/google-play-badge.png")
 .footer
   %ul.contents
     %li.content
       %h2.content__head FURIMAについて
       %ul
         %li
-          = link_to "会社概要（運営会社）", "#", id: "link"
+          = link_to "会社概要（運営会社）", "#", class: "link"
         %li
-          = link_to "プライバシーポリシー", "#", id: "link"
+          = link_to "プライバシーポリシー", "#", class: "link"
         %li
-          = link_to "FURIMA利用規約", "#", id: "link"
+          = link_to "FURIMA利用規約", "#", class: "link"
         %li
-          = link_to "ポイントに関する特約", "#", id: "link"
+          = link_to "ポイントに関する特約", "#", class: "link"
     %li.content
       %h2.content__head FURIMAを見る
       %ul
         %li
-          = link_to "カテゴリー一覧", "#", id: "link"
+          = link_to "カテゴリー一覧", "#", class: "link"
         %li
-          = link_to "ブランド一覧", "#", id: "link"
+          = link_to "ブランド一覧", "#", class: "link"
     %li.content
       %h2.content__head ヘルプ＆ガイド
       %ul
         %li
-          = link_to "FURIMAガイド", "#", id: "link"
+          = link_to "FURIMAガイド", "#", class: "link"
         %li
-          = link_to "FURIMAロゴ利用ガイドライン", "#", id: "link"
+          = link_to "FURIMAロゴ利用ガイドライン", "#", class: "link"
         %li
-          = link_to "お知らせ", "#", id: "link"
+          = link_to "お知らせ", "#", class: "link"
   .footer__logo
     = link_to image_tag("/material/logo/logo-white.png", class:"logo")
   %p © FURIMA
