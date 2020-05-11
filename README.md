@@ -126,7 +126,7 @@ belongs_to :user
 |shipping_fee_side|boolean|null: false|
 |prefectures_id|integer|null: false, foreign_key: true|
 |shipping_days|integer||
-|user_id|integer|null: false,foreign_key: true|
+|user_id|integer|null: false, null: false|
 
 ### Association
 - belongs_to :user

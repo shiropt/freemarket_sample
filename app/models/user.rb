@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   has_one :profile
   has_one :address
+  has_one :credit_card
+  has_many :purchased_infos
+  has_many :items
+  has_many :comments
 
   accepts_nested_attributes_for :profile
   accepts_nested_attributes_for :address

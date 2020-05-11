@@ -78,15 +78,8 @@ gem 'devise'
 gem 'font-awesome-sass'
 gem 'carrierwave'
 gem 'mini_magick'
-
+gem 'rspec-rails'
 gem 'ancestry'
-
-
-
-# 追加
-# erbからhamlへの変換の為
-gem 'erb2haml'
-
 gem 'haml-rails'
-# active_hash実装の為
 gem 'active_hash'
+
