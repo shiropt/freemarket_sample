@@ -1,0 +1,133 @@
+.sell
+  .sell__header
+    = link_to image_tag("/material/logo/logo.png", class:"sell__header__logo"), root_path
+  .sell__main
+    .item-form
+      = form_with model:@item do |f|
+        .item-photo
+          .item-photo__label
+            出品画像
+            %span.item-photo__label__require
+              必須
+          .item-photo__text
+            最大3枚までアップロードできます
+          %label.item-photo__input-box
+            = icon('fas', 'camera', class: "item-photo__input-box__icon")
+            %input{type: "file", class: "item-photo__input-box__image"}
+            /出品機能実装時は以下に変更 今はモデルがないので仮のインプットボックス
+            -# = f.fields_for :image do |image|
+            -# = image.filefield :image, class: "item-photo__input-box"
+        .item-overview
+          .name
+            .name__label
+              商品名
+              %span.name__label__require
+                必須
+            = f.text_field :name, class: "name__form", placeholder: "40文字まで"
+          .description
+            .description__label
+              商品説明
+              %span.description__label__require
+                必須
+            = f.text_area :description, class: "description__form", placeholder: "商品の説明 (1000文字まで)", rows: '5'
+        .item-detail
+          商品の詳細
+          .category
+            .category_label
+              カテゴリー
+              %span.category__label__require
+                必須
+            -# モデルが未作成のため仮のボックス
+            = f.text_field :category_id, class: "category__form", placeholder: "カテゴリー"
+          
+          .size
+            .size_label
+              サイズ
+              %span.size__label__optional
+                任意
+            -# モデルが未作成のため仮のボックス
+            = f.text_field :size, class: "size__form", placeholder: "サイズ"
+          .brand
+            .brand_label
+              ブランド
+              %span.brand__label__optional
+                任意
+            -# モデルが未作成のため仮のボックス
+            = f.text_field :brand_id, class: "brand__form", placeholder: "ブランド"
+          .condition
+            .condition_label
+              商品の状態
+              %span.condition__label__require
+                必須
+            -# モデルが未作成のため仮のボックス
+            = f.text_field :condition, class: "condition__form", placeholder: "商品の状態"
+        .item-shipping
+          配送について
+          .shipping-fee-side
+            .shipping-fee-side__label
+              配送料の負担
+              %span.shipping-fee-side__label__require
+                必須
+            -# モデルが未作成のため仮のボックス
+            = f.text_field :shipping_fee_side, class: "shipping-fee-side__form", placeholder: "配送料の負担"
+          -# 配送料は購入者の住所で変わるため設計を見直す必要がある
+          .shipping-fee
+            .shipping-fee_label
+              配送料
+              %span.shipping-fee__label__require
+                必須
+            = f.text_field :shipping_fee, class: "shipping-fee__form", placeholder: "0"
+          .prefectures
+            .prefectures__label
+              発送元の地域
+              %span.prefectures__label__require
+                必須
+            -# 都道府県のアクティブハッシュが未作成のため機能実装時に修正
+            = f.text_field :prefectures_id, class: "prefectures__form", placeholder: "都道府県"
+          .shipping-days
+            .shipping-days__label
+              発送までの日数
+              %span.shipping-days__label__optional
+                任意
+            -# モデルが未作成のため仮のボックス
+            = f.text_field :shipping_days, class: "shipping-days__form", placeholder: "発送までの日数"
+        .item-price
+          .price-range
+            価格(¥300~9,999,999)
+          .price
+            .price__label
+              販売価格
+              %span.price__label__require
+                必須
+            .price-input
+              ¥
+              = f.text_field :price, class: "price-input__form", placeholder: "0"
+          .sales-fee
+            .sales-fee__label
+              販売手数料(10%)
+            .sales-fee__calculation
+              ー
+          .profit
+            .profit__label
+              販売利益
+            .profit__calculation
+              ー
+        .submit
+          = f.submit '出品する', class: "submit__btn"
+        .to-top
+          = link_to root_path, class: "to-top__link" do
+            もどる
+        .warning-note
+          禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+
+  .sell__footer
+    .sell__footer__infos
+      .sell__footer__infos__list
+        = link_to 'プライバシーポリシー','#', class: 'sell__footer__infos__list__info'
+        = link_to 'FURIMA利用規約','#', class: 'sell__footer__infos__list__info'
+        = link_to 'ポイントに関する特約','#', class: 'sell__footer__infos__list__info'
+    .sell__footer__logo
+      = link_to image_tag("/material/logo/logo-white.png", class:"sell__footer__logo__img"), root_path
+    %p.sell__footer__copyright 
+      © FURIMA
+  
