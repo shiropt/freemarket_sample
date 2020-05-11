@@ -1,45 +1,45 @@
 class SignupController < ApplicationController
-  before_action :step1_valid, only: :step2            # step2前にstep1をバリデーションにかける為
+  before_action :signup_page_1_valid, only: :signup_page_2            # page_2前にpage_1をバリデーションにかける為
 
   def signup_select
   end
   
-  def step1
+  def signup_page_1
     @user = User.new                  # 空のインスタンス定義
     @user.build_profile               # nicknameをprofilesテーブルに保存する為の関連付け
   end
 
   # before_actionでバリデーションをかける
-  def step1_valid
+  def signup_page_1_valid
     session[:user_params] = user_params
-    session[:profile_attributes_after_step1] = user_params[:profile_attributes]
+    session[:profile_attributes_after_page1] = user_params[:profile_attributes]
     @user = User.new(session[:user_params])
-    @user.build_profile(session[:profile_attributes_after_step1])
-    render '/signup/step1' unless @user.valid?
+    @user.build_profile(session[:profile_attributes_after_page1])
+    render '/signup/new_registration_page_1' unless @user.valid?
   end
 
-  def step2
+  def signup_page_2
     @user = User.new
     @user.build_address
   end
 
-  # step2で画面更新を行った際再びstep2を初期状態で表示させる為
+  # page_2で画面更新を行った際再びstep2を初期状態で表示させる為
   def show
     @user = User.new
     @user.build_address
-    render "step2"
+    render "signup_page_2"
   end
 
-  # step2のバリデーションはcreateアクション内で実行される仕様
+  # page_2のバリデーションはcreateアクション内で実行される仕様
   def create
     @user = User.new(session[:user_params])
-    @user.build_profile(session[:profile_attributes_after_step1])
+    @user.build_profile(session[:profile_attributes_after_page1])
     @user.build_address(user_params[:address_attributes])
     if @user.save                                  # 登録データをDBへ保存
       session[:id] = @user.id                      # user.idをsessionに入れるとログイン状態となる
       redirect_to done_signup_index_path
     else
-      render 'step2'
+      render 'signup_page_2'
       return
     end
   end

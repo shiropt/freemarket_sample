@@ -1,5 +1,5 @@
 
-= form_for @user, url: step2_signup_index_path, html: {class: "first_form_box"} do |f|
+= form_for @user, url: signup_page_2_signup_index_path do |f|
   = f.fields_for :profile do |p|          #別モデルのprofileに保存する為
     ニックネーム
     = p.text_field :nickname, placeholder: '例)メルカリ太郎'
