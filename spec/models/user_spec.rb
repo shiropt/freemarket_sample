@@ -44,6 +44,12 @@ describe User do
       expect(user.errors[:password]).to_not match(/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,100}\z/i)
     end
 
+    it "password_confirmationが無いと登録できないこと" do
+      user = build(:user, password_confirmation: nil)
+      user.valid?
+      expect(user.errors[:password_confirmation]).to include("can't be blank")
+    end
+
     it "last_nameが全角ひらカナ漢字以外を含む時は登録できないこと" do
       user = build(:user, last_name: "hoge壱")
       user.valid?

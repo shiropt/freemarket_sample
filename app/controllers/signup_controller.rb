@@ -1,5 +1,8 @@
 class SignupController < ApplicationController
   before_action :step1_valid, only: :step2            # step2前にstep1をバリデーションにかける為
+
+  def signup_select
+  end
   
   def step1
     @user = User.new                  # 空のインスタンス定義
