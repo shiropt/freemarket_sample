@@ -5,9 +5,7 @@ class Address < ApplicationRecord
 
   VALID_NUMBER_REGEX =               [0-9]
 
-  validates :post_code,                  presence: true, numericality: { only_integer: true }
-  validates :prefecture_id,              presence: true
-  validates :city,                       presence: true
-  validates :block,                      presence: true
-  validates :telephone_number,           numericality: { only_integer: true }, allow_nil: true
+  validates :post_code,                          presence: true, numericality: { only_integer: true }
+  validates :prefecture_id, :city, :block,       presence: true
+  validates :telephone_number,                   numericality: { only_integer: true }, allow_nil: true
 end

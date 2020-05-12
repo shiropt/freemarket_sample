@@ -15,7 +15,7 @@ class SignupController < ApplicationController
     session[:profile_attributes_after_page1] = user_params[:profile_attributes]
     @user = User.new(session[:user_params])
     @user.build_profile(session[:profile_attributes_after_page1])
-    render '/signup/new_registration_page_1' unless @user.valid?
+    render '/signup/signup_page_1' unless @user.valid?
   end
 
   def signup_page_2
