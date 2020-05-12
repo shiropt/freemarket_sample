@@ -1,0 +1,46 @@
+$main-color: #3CCACE;
+
+@mixin shadow {
+  text-shadow: 0 0 5px rgba(0,0,0,0.4);
+  color: #fff;
+}
+
+@mixin banner() {
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+
+@mixin line() {
+  content: "";
+  width: 70px;
+  height: 4px;
+  background-color: $main-color;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin center() {
+  display: flex;
+  margin: 0 auto;
+  text-align: center;
+}
+
+@mixin download() {
+  .btn-wrapper {
+    display: flex;
+    margin-top: 24px;
+    .btn {
+      img {
+        width: 180px;
+        height: 55px;
+        object-fit: cover;
+      }
+      #apple {
+        width: 170px;
+      }
+    }
+  }
+}
