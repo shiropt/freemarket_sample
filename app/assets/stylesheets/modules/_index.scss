@@ -72,6 +72,52 @@
           line-height: 38px;
           padding: 0 0 0 16px;
         }
+        .category{
+          height: 30px;
+          position: relative;
+          cursor: pointer;
+        }
+        .parent, .child, .grandchild{
+          background-color: #fff;
+          visibility:hidden;
+          width: 250px;
+        }
+        .category:hover .parent {
+          visibility:visible;
+        }
+        .child{  
+          height: 700px;
+          position: absolute;
+          left:250px;
+          top:38px;
+        }
+        .parent-content:hover .child {
+          // color:#ffb340;
+          visibility:visible;
+        }
+        .child-content:hover .grandchild{
+          visibility:visible;
+        }
+        .grandchild{
+          height: 700px;
+          position: absolute;
+          left:250px;
+          top:0px;
+          z-index: 1;
+        }
+        
+        
+            
+        
+
+          
+
+
+        
+  
+
+
+
       }
       .lists-right {
         color: #333;

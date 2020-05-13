@@ -8,4 +8,41 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+  .header
+  .header__inner
+    .header__inner__main
+      %h1.main-logo
+        = link_to image_tag("/material/logo/logo.png", class:"logo")
+      .search-box
+        = form_with(url: "#", local: true) do |f|
+          = f.text_field :content, class: "search-input", placeholder: "キーワードから探す"
+        %button{type: "submit", class: "search-icon"}
+          = image_tag("/material/icon/icon-search 1.png", class:"icon")
+          %ul.resultLists
+    .header__inner__nav
+      %ul.lists-left
+        %li.lists-left__category
+          .category
+            カテゴリー
+            .parent
+              - @parents.each do |parent|
+                .parent-content
+                  = parent.name
+                  .child
+                    - parent.children.each do |child|
+                      .child-content
+                        = link_to child.name, "#"
+                        .grandchild
+                          - child.children.each do |grandchild|
+                            .grandchild-content
+                              = link_to grandchild.name, "#"
+        %li.lists-left__brand
+          ブランド
+      %ul.lists-right
+        %li.lists-right__login
+          = link_to "ログイン", "#", class: "link"
+        %li.lists-right__signup
+          = link_to "新規会員登録", "#", class: "link"
+
+          
     = yield
