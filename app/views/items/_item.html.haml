@@ -1,7 +1,7 @@
 - @items.each do |item|
   .list
     = link_to item_path(item.id) do
-      - unless item.purchased_info.user_id?
+      - if item.purchased_info.blank?
         = image_tag item.images.first.image, class: "img"
     .list__details
       %h3.name
