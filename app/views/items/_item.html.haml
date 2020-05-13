@@ -1,16 +1,16 @@
 - @items.each do |item|
-  .list
-    = link_to item_path(item.id) do
-      - if item.purchased_info.blank?
+  - if item.purchased_info.blank?
+    .list
+      = link_to item_path(item.id) do
         = image_tag item.images.first.image, class: "img"
-    .list__details
-      %h3.name
-        = item.name
-      .price
-        %ul
-          %li 
-            = "#{item.price}円"
-          %li
-            = icon('fas', 'star')
-            0
-        %p (税込)
+      .list__details
+        %h3.name
+          = item.name
+        .price
+          %ul
+            %li 
+              = "#{item.price}円"
+            %li
+              = icon('fas', 'star')
+              0
+          %p (税込)
