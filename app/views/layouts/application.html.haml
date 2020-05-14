@@ -12,7 +12,7 @@
   .header__inner
     .header__inner__main
       %h1.main-logo
-        = link_to image_tag("/material/logo/logo.png", class:"logo")
+        = link_to image_tag("/material/logo/logo.png", class:"logo"),root_path
       .search-box
         = form_with(url: "#", local: true) do |f|
           = f.text_field :content, class: "search-input", placeholder: "キーワードから探す"
@@ -31,11 +31,11 @@
                   .child
                     - parent.children.each do |child|
                       .child-content
-                        = link_to child.name, "#"
+                        = link_to child.name, category_index_path
                         .grandchild
                           - child.children.each do |grandchild|
                             .grandchild-content
-                              = link_to grandchild.name, "#"
+                              = link_to grandchild.name, category_index_path
         %li.lists-left__brand
           ブランド
       %ul.lists-right

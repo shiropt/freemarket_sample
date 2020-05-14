@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :items, only:[:index,:show]
+  resources :category, only:[:index,:show]
   resources :signup do
     collection do
       get 'signup_select' #登録方法確認
@@ -9,6 +10,6 @@ Rails.application.routes.draw do
       get 'done' # 登録完了後のページ
     end
   end
-  root 'items#index'
+  root 'category#show'
 
 end
