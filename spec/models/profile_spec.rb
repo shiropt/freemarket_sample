@@ -1,5 +1,10 @@
 require 'rails_helper'
-
-RSpec.describe Profile, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Profile do
+  describe '#create' do
+    it "nicknameがない場合は登録できないこと" do
+      user = build(:profile, nickname: nil)
+      user.valid?
+      expect(user.errors[:nickname]).to include("can't be blank")
+    end
+  end
 end

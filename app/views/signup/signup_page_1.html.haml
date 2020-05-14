@@ -1,0 +1,27 @@
+
+= form_for @user, url: signup_page_2_signup_index_path do |f|
+  = f.fields_for :profile do |p|          #別モデルのprofileに保存する為
+    ニックネーム
+    = p.text_field :nickname, placeholder: '例)メルカリ太郎'
+  メールアドレス
+  = f.email_field :email, placeholder: 'PC・携帯どちらでも可'
+  パスワード
+  = f.password_field :password, placeholder: '７文字以上の半角英数字'
+  確認用パスワード
+  = f.password_field :password_confirmation, placeholder: '７文字以上'
+  お名前(全角)
+  = f.text_field :last_name, placeholder: '例)安倍'
+  = f.text_field :first_name, placeholder: '例)晋三'
+  お名前かな(全角)
+  = f.text_field :last_name_kana, placeholder: '例)あべ'
+  = f.text_field :first_name_kana, placeholder: '例)しんぞう'
+  性別
+  = f.label :gender, :男性
+  = f.radio_button :gender, 1
+  = f.label :gender, :女性
+  = f.radio_button :gender, 2
+  = f.label :gender, :無回答
+  = f.radio_button :gender, 3
+  生年月日
+  = f.date_select :birth_day, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)
+  = f.submit '次へ進む'
