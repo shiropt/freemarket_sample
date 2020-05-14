@@ -12,6 +12,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer  :brand_id, null: false, null: false
       t.integer  :category_id, null: false, null: false
       t.integer  :prefectures_id, null: false, null: false
+      t.integer :purchased_info_id, foreign_key: true
       t.timestamps
     end
   end

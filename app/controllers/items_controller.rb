@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.includes(:images, :purchased_info).limit(4).order("created_at DESC")
+    @items = Item.where(purchased_info_id: nil).includes(:images, :purchased_info).order("created_at DESC").limit(3)
   end
+
 end
