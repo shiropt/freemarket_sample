@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :items, only:[:index,:show]
+  resources :items, only:[:index,]
   resources :category, only:[:index,:show]
   resources :signup do
     collection do
