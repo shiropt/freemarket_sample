@@ -49,12 +49,36 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :gender, :birth_day, profile_attributes: [:nickname], address_attributes: [:post_code, :prefecture_id, :city, :block, :building, :telephone_number]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [
+      :last_name,
+      :first_name,
+      :last_name_kana,
+      :first_name_kana,
+      :gender,
+      :birth_day,
+      profile_attributes: [:nickname],
+      address_attributes: [:post_code,
+                           :prefecture_id,
+                           :city, :block,
+                           :building,
+                           :telephone_number]])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
-  def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :gender, :birth_day, profile_attributes: [:nickname], address_attributes: [:post_code, :prefecture_id, :city, :block, :building, :telephone_number]])
+  def configure_account_update_param
+    devise_parameter_sanitizer.permit(:account_update, keys: [
+      :last_name,
+      :first_name,
+      :last_name_kana,
+      :first_name_kana,
+      :gender,
+      :birth_day,
+      profile_attributes: [:nickname],
+      address_attributes: [:post_code,
+                           :prefecture_id,
+                           :city, :block,
+                           :building,
+                           :telephone_number]])
   end
 
   # The path used after sign up.
