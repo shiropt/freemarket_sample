@@ -1,7 +1,9 @@
-.title-box
-  {`#reidys`}の商品一覧
-.content-box
-  - @ladys.each do |parent|
-    .content
-      = link_to parent.name, category_index_path
+.item-wrapper
+  .title-box
+    #{@categories.name} の商品一覧
+  .content-box
+    - @categories.children.each do |category|
+      .contents
+        = link_to category.name, category_path(category.id), class: "category-link"
+
 

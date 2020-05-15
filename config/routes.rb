@@ -10,6 +10,6 @@ Rails.application.routes.draw do
       get 'done' # 登録完了後のページ
     end
   end
-  root 'category#show'
+  root 'items#index'
 
 end

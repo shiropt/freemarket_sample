@@ -31,11 +31,11 @@
                   .child
                     - parent.children.each do |child|
                       .child-content
-                        = link_to child.name, category_index_path
+                        = link_to child.name, category_path(child.id), class: "top-link"
                         .grandchild
                           - child.children.each do |grandchild|
                             .grandchild-content
-                              = link_to grandchild.name, category_index_path
+                              = link_to grandchild.name, category_path(grandchild.id), class: "top-link"
         %li.lists-left__brand
           ブランド
       %ul.lists-right
@@ -46,3 +46,51 @@
 
           
     = yield
+  .main__bottom-banner
+    .main__bottom-banner__content
+      %h2.subtitle
+        だれでもかんたん、人生を変えるフリマアプ
+      %p.text
+        今すぐ無料ダウンロード！
+      .btn-wrapper
+        .btn
+          = link_to "#" do
+            = image_tag("/material/pict/apple-store-logo-4.png", id:"apple")
+        .btn
+          = link_to "#" do
+            = image_tag("/material/pict/google-play-badge.png")
+  .footer
+    %ul.contents
+      %li.content
+        %h2.content__head FURIMAについて
+        %ul
+          %li
+            = link_to "会社概要（運営会社）", "#", class: "link"
+          %li
+            = link_to "プライバシーポリシー", "#", class: "link"
+          %li
+            = link_to "FURIMA利用規約", "#", class: "link"
+          %li
+            = link_to "ポイントに関する特約", "#", class: "link"
+      %li.content
+        %h2.content__head FURIMAを見る
+        %ul
+          %li
+            = link_to "カテゴリー一覧", "#", class: "link"
+          %li
+            = link_to "ブランド一覧", "#", class: "link"
+      %li.content
+        %h2.content__head ヘルプ＆ガイド
+        %ul
+          %li
+            = link_to "FURIMAガイド", "#", class: "link"
+          %li
+            = link_to "FURIMAロゴ利用ガイドライン", "#", class: "link"
+          %li
+            = link_to "お知らせ", "#", class: "link"
+    .footer__logo
+      = link_to image_tag("/material/logo/logo-white.png", class:"logo")
+    %p © FURIMA
+  .purchase-btn
+    %span.purchase-btn__text 出品する
+    = link_to image_tag("/material/icon/icon_camera.png", class:"purchase-btn__icon")

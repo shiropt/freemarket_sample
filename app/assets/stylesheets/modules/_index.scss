@@ -74,13 +74,19 @@
         }
         .category{
           height: 30px;
+          width: 70px;
           position: relative;
           cursor: pointer;
         }
         .parent, .child, .grandchild{
           background-color: #fff;
           visibility:hidden;
-          width: 250px;
+          width: 230px;
+        }
+        .parent-content:hover{
+
+        color:sandybrown;
+
         }
         .category:hover .parent {
           visibility:visible;
@@ -88,11 +94,10 @@
         .child{  
           height: 700px;
           position: absolute;
-          left:250px;
+          left:230px;
           top:38px;
         }
         .parent-content:hover .child {
-          // color:#ffb340;
           visibility:visible;
         }
         .child-content:hover .grandchild{
@@ -101,7 +106,7 @@
         .grandchild{
           height: 700px;
           position: absolute;
-          left:250px;
+          left:230px;
           top:0px;
           z-index: 1;
         }
@@ -362,6 +367,7 @@
     background-image: url("/material/pict/bg-appBanner-pict.jpg");
     background-position: center;
     background-size: cover;
+    clear:left;
     &__content {
       width: 100%;
       text-align: center;
