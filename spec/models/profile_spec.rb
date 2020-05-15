@@ -4,7 +4,7 @@ describe Profile do
     it "nicknameがない場合は登録できないこと" do
       user = build(:profile, nickname: nil)
       user.valid?
-      expect(user.errors[:nickname]).to include("can't be blank")
+      expect(user.errors[:nickname]).to include("を入力してください")
     end
   end
 end

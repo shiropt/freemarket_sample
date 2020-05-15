@@ -1,0 +1,18 @@
+.new-registration
+  .new-registration__header
+  フリマアプリ（仮）
+  .new-registration__main
+    %h2.new-registration__main__top 会員情報変更
+    = form_with model: @user, url: user_registration_path,  class: 'user__form',local: true do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .field
+        = f.fields_for :profile, @user.profile do |p|
+          %label.field--title ニックネーム
+          %span.field--span 必須
+          = p.text_field :nickname, placeholder: '例)メルカリ太郎', class: "field-input"
+      .field
+        %label.field--title メールアドレス
+        %span.field--span 必須
+        = f.email_field :email, placeholder: '例)hoge@hoge.jp', class: "field-input"
+      = render "new.edit",  f: f
+  = render "devise/shared/links"
