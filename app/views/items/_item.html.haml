@@ -1,6 +1,6 @@
 - @items.each do |item|
   .list
-    = link_to item_path(item.id) do
+    = link_to "#" do
       = image_tag item.images.first.image, class: "img"
     .list__details
       %h3.name
