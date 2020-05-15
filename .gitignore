@@ -25,14 +25,4 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-app/assets/javascripts/users.coffee
-app/assets/stylesheets/users.scss
-app/controllers/users/confirmations_controller.rb
-app/controllers/users/omniauth_callbacks_controller.rb
-app/controllers/users/passwords_controller.rb
-app/controllers/users/sessions_controller.rb
-app/controllers/users/unlocks_controller.rb
-config/locales/devise.ja.yml
-config/locales/ja.yml
-app/views/signup/done.html.haml
-app/views/signup/done.html.haml
+
