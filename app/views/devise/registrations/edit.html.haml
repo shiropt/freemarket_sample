@@ -2,51 +2,17 @@
   .new-registration__header
   フリマアプリ（仮）
   .new-registration__main
-    %h2.new-registration__main__top 新規会員登録
+    %h2.new-registration__main__top 会員情報変更
     = form_with model: @user, url: user_registration_path,  class: 'user__form',local: true do |f|
       = render "devise/shared/error_messages", resource: resource
       .field
-        = f.fields_for :profile, @user.profile.nickname do |p|
-          ニックネーム
-          %br/
+        = f.fields_for :profile, @user.profile do |p|
+          %label.field--title ニックネーム
+          %span.field--span 必須
           = p.text_field :nickname, placeholder: '例)メルカリ太郎', class: "field-input"
       .field
         %label.field--title メールアドレス
-        %br/
-        = f.email_field :email, placeholder: '例)hoge@hoge.jp', autofocus: true, autocomplete: "email", class: "field-input"
-      .field
-        名前
-        = f.text_field :last_name, placeholder: '例)安倍', class: "field-input__name--left"
-        = f.text_field :first_name, placeholder: '例)晋三', class: "field-input__name--right"
-      .field
-        名前かな
-        = f.text_field :last_name_kana, placeholder: '例)あべ', class: "field-input__name--left"
-        = f.text_field :first_name_kana, placeholder: '例)しんぞう', class: "field-input__name--right"
-      .field
-        性別
-        = f.radio_button :gender, 1
-        = f.label "男 性", for: "user_gender_1"
-        = f.radio_button :gender, 2
-        = f.label "女 性", for: "user_gender_2"
-        = f.radio_button :gender, 3
-        = f.label "無 回 答", for: "user_gender_3"
-      .field
-        生年月日
-        = f.date_select :birth_day, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)
-      .field
-        = f.fields_for :address, @user.address do |m|
-          郵便番号
-          = m.text_field :post_code, placeholder: '例)1234567',maxlength:'7'
-          都道府県
-          = m.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--"
-          市町村
-          = m.text_field :city, placeholder: '例)渋谷区'
-          番地
-          = m.text_field :block, placeholder: '道玄坂1-1-1'
-          建物名
-          = m.text_field :building, placeholder: '例)フォンティスビル'
-          電話番号（任意）
-          = m.text_field :telephone_number, placeholder: '例)08012345678',maxlength:'11'
-      .actions
-        = f.submit "Sign up"
+        %span.field--span 必須
+        = f.email_field :email, placeholder: '例)hoge@hoge.jp', class: "field-input"
+      = render "new.edit",  f: f
   = render "devise/shared/links"
