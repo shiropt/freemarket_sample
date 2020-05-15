@@ -1,0 +1,79 @@
+.new-registration
+  .new-registration__header
+  フリマアプリ（仮）
+  .new-registration__main
+    %h2.new-registration__main__top 新規会員登録
+    = form_with model: @user, url: user_registration_path,  class: 'user__form',local: true do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .field
+        = f.fields_for :profile, @user.profile do |p|
+          %label.field--title ニックネーム
+          %span.field--span 必須
+          = p.text_field :nickname, placeholder: '例)メルカリ太郎', class: "field-input"
+      .field
+        %label.field--title メールアドレス
+        %span.field--span 必須
+        = f.email_field :email, placeholder: '例)hoge@hoge.jp', class: "field-input"
+      .field
+        %label.field--title パスワード
+        %span.field--span 必須
+        = f.password_field :password, placeholder: '7文字以上の半角英数字', autocomplete: "new-password", class: "field-input"
+        %p.password--attention ※英字と数字の両方を含めて設定してください
+      .field
+        %label.field--title 確認用パスワード
+        %span.field--span 必須
+        = f.password_field :password_confirmation, placeholder: '7文字以上の半角英数字', autocomplete: "new-password",class: "field-input"
+      .field
+        %label.field--title お名前
+        %span.field--span 必須
+        %br/
+        = f.text_field :last_name, placeholder: '例)安倍', class: "field-input__name--left"
+        = f.text_field :first_name, placeholder: '例)晋三', class: "field-input__name--right"
+      .field
+        %label.field--title お名前かな
+        %span.field--span 必須
+        %br/
+        = f.text_field :last_name_kana, placeholder: '例)あべ', class: "field-input__name--left"
+        = f.text_field :first_name_kana, placeholder: '例)しんぞう', class: "field-input__name--right"
+      .field
+        %label.field--title 性別
+        %span.field--span 必須
+        %br/
+        = f.radio_button :gender, 1
+        = f.label "男 性", for: "user_gender_1"
+        = f.radio_button :gender, 2
+        = f.label "女 性", for: "user_gender_2"
+        = f.radio_button :gender, 3
+        = f.label "無 回 答", for: "user_gender_3"
+      .field
+        %label.field--title 生年月日
+        %span.field--span 必須
+        = f.date_select :birth_day, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)
+      = f.fields_for :address, @user.address do |m|
+        .field
+          %label.field--title 郵便番号
+          %span.field--span 必須
+          = m.text_field :post_code, placeholder: '例)1234567',maxlength:'7', class: "field-input"
+        .field
+          %label.field--title 都道府県
+          %span.field--span 必須
+          = m.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--", class: "field-input"
+        .field
+          %label.field--title 市町村
+          %span.field--span 必須
+          = m.text_field :city, placeholder: '例)渋谷区', class: "field-input"
+        .field
+          %label.field--title 番地
+          %span.field--span 必須
+          = m.text_field :block, placeholder: '道玄坂1-1-1', class: "field-input"
+        .field
+          %label.field--title 建物名
+          %span.field--span--optional 任意
+          = m.text_field :building, placeholder: '例)フォンティスビル', class: "field-input"
+        .field
+          %label.field--title 電話番号
+          %span.field--span--optional 任意
+          = m.text_field :telephone_number, placeholder: '例)08012345678',maxlength:'11', class: "field-input"
+      .actions
+        = f.submit "Sign up"
+  = render "devise/shared/links"

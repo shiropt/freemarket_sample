@@ -10,20 +10,20 @@ describe User do
     it "emailがない場合は登録できないこと" do
       user = build(:user, email: nil)
       user.valid?
-      expect(user.errors[:email]).to include("can't be blank")
+      expect(user.errors[:email]).to include("を入力してください")
     end
 
     it "重複したemailが存在する場合登録できないこと" do
       user = create(:user)
       another_user = build(:user, email: user.email)
       another_user.valid?
-      expect(another_user.errors[:email]).to include("has already been taken")
+      expect(another_user.errors[:email]).to include("はすでに存在します")
     end
 
     it "passwordが無いと登録できないこと" do
       user = build(:user, password: nil)
       user.valid?
-      expect(user.errors[:password]).to include("can't be blank")
+      expect(user.errors[:password]).to include("を入力してください")
     end
 
     it "passwordが７文字以下の時は登録できないこと" do
@@ -44,22 +44,17 @@ describe User do
       expect(user.errors[:password]).to_not match(/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,100}\z/i)
     end
 
-    it "password_confirmationが無いと登録できないこと" do
-      user = build(:user, password_confirmation: nil)
-      user.valid?
-      expect(user.errors[:password_confirmation]).to include("can't be blank")
-    end
 
     it "last_nameが全角ひらカナ漢字以外を含む時は登録できないこと" do
       user = build(:user, last_name: "hoge壱")
       user.valid?
-      expect(user.errors[:last_name]).to_not match(/\A[ぁ-んァ-ン一-龥]/)
+      expect(user.errors[:last_name]).to_not match(/\A[ぁ-んァ-ン一-龥]+\z/)
     end
 
     it "first_nameが全角ひらカナ漢字以外を含む時は登録できないこと" do
       user = build(:user, first_name: "ほげ1")
       user.valid?
-      expect(user.errors[:first_name]).to_not match(/\A[ぁ-んァ-ン一-龥]/)
+      expect(user.errors[:first_name]).to_not match(/\A[ぁ-んァ-ン一-龥]+\z/)
     end
 
     it "last_name_kanaが全角ひらがな以外を含む時は登録できないこと" do
@@ -77,13 +72,13 @@ describe User do
     it "genderが無いと登録できないこと" do
       user = build(:user, gender: nil)
       user.valid?
-      expect(user.errors[:gender]).to include("can't be blank")
+      expect(user.errors[:gender]).to include("を入力してください")
     end
 
     it "birth_dayが無いと登録できないこと" do
       user = build(:user, birth_day: nil)
       user.valid?
-      expect(user.errors[:birth_day]).to include("can't be blank")
+      expect(user.errors[:birth_day]).to include("を入力してください")
     end
   end
 end
