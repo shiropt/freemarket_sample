@@ -73,6 +73,44 @@
           line-height: 38px;
           padding: 0 0 0 16px;
         }
+        .category{
+          height: 30px;
+          width: 70px;
+          position: relative;
+          cursor: pointer;
+        }
+        .parent, .child, .grandchild{
+          background-color: #fff;
+          visibility:hidden;
+          width: 230px;
+        }
+        .parent-content:hover{
+
+        color:sandybrown;
+
+        }
+        .category:hover .parent {
+          visibility:visible;
+        }
+        .child{  
+          height: 700px;
+          position: absolute;
+          left:230px;
+          top:38px;
+        }
+        .parent-content:hover .child {
+          visibility:visible;
+        }
+        .grandchild{
+          height: 700px;
+          position: absolute;
+          left:230px;
+          top:0px;
+          z-index: 1;
+        }
+        .child-content:hover .grandchild{
+          visibility:visible;
+        }
       }
       .lists-right {
         color: #333;
@@ -319,6 +357,7 @@
     background-image: url("/material/pict/bg-appBanner-pict.jpg");
     background-position: center;
     background-size: cover;
+    clear:left;
     &__content {
       width: 100%;
       text-align: center;

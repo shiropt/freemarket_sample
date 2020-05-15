@@ -1,0 +1,139 @@
+.parent
+  - @parents.each do |parent|
+    .parent-box
+      = link_to parent.name, category_path(parent.id), class: "category-link"
+
+.title-box
+  #{@ladys.name} 
+.content-box
+  - @ladys.children.each do |lady|
+    .contents-title
+      =lady.name
+      .index-contents
+        - lady.children.each do |ladyItem|
+          .items
+            =link_to ladyItem.name, category_path(ladyItem.id), class: "category-link"
+.title-box
+  #{@mens.name} 
+.content-box
+  - @mens.children.each do |men|
+    .contents-title
+      =men.name
+      .index-contents
+        - men.children.each do |menItem|
+          .items
+            =link_to menItem.name, category_path(men.id), class: "category-link"
+.title-box
+  #{@babys.name} 
+.content-box
+  - @babys.children.each do |baby|
+    .contents-title
+      =baby.name
+      .index-contents
+        - baby.children.each do |babyItem|
+          .items
+            =link_to babyItem.name, category_path(baby.id), class: "category-link"
+.title-box
+  #{@interias.name} 
+.content-box
+  - @interias.children.each do |interia|
+    .contents-title
+      =interia.name
+      .index-contents
+        - interia.children.each do |interiaItem|
+          .items
+            =link_to interiaItem.name, category_path(interia.id), class: "category-link"
+.title-box
+  #{@books.name} 
+.content-box
+  - @books.children.each do |book|
+    .contents-title
+      =book.name
+      .index-contents
+        - book.children.each do |bookItem|
+          .items
+            =link_to bookItem.name, category_path(book.id), class: "category-link"
+.title-box
+  #{@hobys.name} 
+.content-box
+  - @hobys.children.each do |hoby|
+    .contents-title
+      =hoby.name
+      .index-contents
+        - hoby.children.each do |hobyItem|
+          .items
+            =link_to hobyItem.name, category_path(hoby.id), class: "category-link"
+.title-box
+  #{@beautys.name} 
+.content-box
+  - @beautys.children.each do |beauty|
+    .contents-title
+      =beauty.name
+      .index-contents
+        - beauty.children.each do |beautyItem|
+          .items
+            =link_to beautyItem.name, category_path(beauty.id), class: "category-link"
+.title-box
+  #{@cameras.name} 
+.content-box
+  - @cameras.children.each do |camera|
+    .contents-title
+      =camera.name
+      .index-contents
+        - camera.children.each do |cameraItem|
+          .items
+            =link_to cameraItem.name, category_path(camera.id), class: "category-link"
+.title-box
+  #{@sports.name} 
+.content-box
+  - @sports.children.each do |sport|
+    .contents-title
+      =sport.name
+      .index-contents
+        - sport.children.each do |sportItem|
+          .items
+            =link_to sportItem.name, category_path(sport.id), class: "category-link"
+.title-box
+  #{@handmades.name} 
+.content-box
+  - @handmades.children.each do |handmade|
+    .contents-title
+      =handmade.name
+      .index-contents
+        - handmade.children.each do |handmadeItem|
+          .items
+            =link_to handmadeItem.name, category_path(handmade.id), class: "category-link"
+.title-box
+  #{@tickets.name} 
+.content-box
+  - @tickets.children.each do |ticket|
+    .contents-title
+      =ticket.name
+      .index-contents
+        - ticket.children.each do |ticketItem|
+          .items
+            =link_to ticketItem.name, category_path(ticket.id), class: "category-link"
+.title-box
+  #{@cars.name} 
+.content-box
+  - @cars.children.each do |car|
+    .contents-title
+      =car.name
+      .index-contents
+        - car.children.each do |carItem|
+          .items
+            =link_to carItem.name, category_path(car.id), class: "category-link"
+.title-box
+  #{@others.name} 
+.content-box
+  - @others.children.each do |other|
+    .contents-title
+      =other.name
+      .index-contents
+        - other.children.each do |otherItem|
+          .items
+            =link_to otherItem.name, category_path(other.id), class: "category-link"
+  
+
+   
+     
