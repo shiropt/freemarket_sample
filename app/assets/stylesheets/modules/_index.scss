@@ -100,15 +100,15 @@
         .parent-content:hover .child {
           visibility:visible;
         }
-        .child-content:hover .grandchild{
-          visibility:visible;
-        }
         .grandchild{
           height: 700px;
           position: absolute;
           left:230px;
           top:0px;
           z-index: 1;
+        }
+        .child-content:hover .grandchild{
+          visibility:visible;
         }
       }
       .lists-right {
