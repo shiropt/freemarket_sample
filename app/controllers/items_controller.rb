@@ -15,19 +15,30 @@ class ItemsController < ApplicationController
   end
 
   # 商品出品機能
-    #テスト機能を実装
-  def create
-    @item = Item.new(item_params)
-    if @item.save
-      # flash[:notice] = "
-      # 「#{@item.name}」を出品しました"
-      # データの作成時点で、@itemにIDをが付与されている
-      redirect_to @item
-    else
-      render :new
-      # flash[:notice] = @item.errors.full_messages
+    #テスト機能未実装
+    def create
+      @item = Item.new(item_params)
+      if @item.save
+        redirect_to root_path
+      else
+        render :new
+      end
     end
-  end
+
+    # def create
+    #   @item = Item.new(item_params)
+    #   unless @item.valid?
+    #     flash.now[:alert] = @item.errors.full_messages
+    #     @item.images.new
+    #     render :new and return
+    #   end
+    #   if @item.save
+    #     redirect_to root_path
+    #   else
+    #     @item.images.new
+    #     render :new
+    #   end
+    # end
 
   private
 
@@ -43,7 +54,7 @@ class ItemsController < ApplicationController
                                   :shipping_days_id, 
                                   :prefectures_id,  
                                   :user_id,
-                                  images_attributes: {image: []}
+                                  images_attributes: [:id, :image]
                                  ).merge(user_id: current_user.id)
   end
 end
