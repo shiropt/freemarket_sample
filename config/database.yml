@@ -9,7 +9,7 @@
 # And be sure to use new-style password hashing:
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
-default: &default
+default: &default  #ローカル環境
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -47,7 +47,7 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
+production:  #本番環境
   <<: *default
   database: freemarket_sample_74g_production
   username: root
