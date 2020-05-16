@@ -77,7 +77,6 @@ end
 gem 'devise'
 gem 'font-awesome-sass'
 gem 'carrierwave'
-gem 'fog-aws'
 gem 'mini_magick'
 gem 'rspec-rails'
 gem 'ancestry'
