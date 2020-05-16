@@ -93,13 +93,6 @@ Association
 has_many :items
 has_ancestry
 
-### brandsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-Association
-has_many :items
 
 ### purchased_infosテーブル
 |Column|Type|Options|
@@ -118,22 +111,23 @@ belongs_to :user
 |name|string|null: false|
 |description|text|null: false|
 |price|integer|null: false|
-|size|integer|         |
+|size_id|integer|foreign_key: true|
 |category_id|integer|null: false, foreign_key: true|
 |brand_id|integer| foreign_key: true|
-|condition|string|null: false|
-|shipping_fee|integer|null: false|
+|condition_id|string|null: false|
 |shipping_fee_side|boolean|null: false|
 |prefectures_id|integer|null: false, foreign_key: true|
-|shipping_days|integer||
-|user_id|integer|null: false, null: false|
+|shipping_days_id|integer|foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
-- belongs_to_active_hash :prefecture
 - belongs_to :brand
 - belongs_to :category
 - belongs_to :purchased_info
+- belongs_to_active_hash :prefecture
+- belongs_to_active_hash :size
+- belongs_to_active_hash :
 - has_many :images
 - has_many :comments
 

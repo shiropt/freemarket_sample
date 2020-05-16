@@ -24,12 +24,6 @@ ActiveRecord::Schema.define(version: 2020_05_11_024145) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -63,16 +57,16 @@ ActiveRecord::Schema.define(version: 2020_05_11_024145) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "size"
-    t.string "condition", null: false
     t.text "description", null: false
-    t.boolean "shipping_fee_side", null: false
     t.integer "price", null: false
-    t.integer "shipping_days"
-    t.integer "user_id", null: false
-    t.integer "brand_id", null: false
+    t.string "size_id"
     t.integer "category_id", null: false
+    t.string "brand"
+    t.integer "condition_id", null: false
+    t.boolean "shipping_fee_side", null: false
+    t.integer "shipping_days_id", null: false
     t.integer "prefectures_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

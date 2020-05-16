@@ -8,6 +8,6 @@ Rails.application.routes.draw do
       get 'done' # 登録完了後のページ
     end
   end
-  root 'items#show'
-
+  root 'items#index'
+  resources :items
 end
