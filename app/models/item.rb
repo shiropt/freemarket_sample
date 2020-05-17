@@ -13,30 +13,12 @@ class Item < ApplicationRecord
             :user_id,
             presence: true
 
-  # validates :images, presence: true
-  # validates :price, numericality: 
-  #           { only_integer: true,
-  #             greater_than_or_equal_to: 300,
-  #             less_than: 10000000}
-  # validates :condition_id, numericality: 
-  #            { only_integer: true,
-  #              greater_than_or_equal_to: 1,
-  #              less_than: 7}
-  # validates :prefectures_id, numericality: 
-  #            { only_integer: true,
-  #              greater_than_or_equal_to: 1,
-  #              less_than: 48}
-  # validates :shipping_days_id, numericality: 
-  #            { only_integer: true,    
-  #              greater_than_or_equal_to: 1,
-  #              less_than: 4}
-  # validates :size_id, numericality: 
-  #            { only_integer: true,
-  #              greater_than_or_equal_to: 1,
-  #              less_than: 11}
-
-
+  validates :images, presence: true
   
+  validates :price, numericality: 
+            { only_integer: true,
+              greater_than_or_equal_to: 300,
+              less_than: 10000000}
 
   belongs_to_active_hash :size
   belongs_to_active_hash :prefecture

@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
       @item = Item.new
       @item.images.build
     else
-      # flash[:notice] = "商品の出品にはユーザー登録、もしくはログインをしてください"
+      flash[:notice] = "商品の出品にはユーザー登録、もしくはログインをしてください"
       redirect_to signup_select_signup_index_path
     end
   end
@@ -18,27 +18,18 @@ class ItemsController < ApplicationController
     #テスト機能未実装
     def create
       @item = Item.new(item_params)
+      unless @item.valid?
+        flash.now[:alert] = @item.errors.full_messages
+        @item.images.new
+        render :new and return
+      end
       if @item.save
+        flash[:notice] = "「#{@item.name}」を出品しました"
         redirect_to root_path
       else
         render :new
       end
     end
-
-    # def create
-    #   @item = Item.new(item_params)
-    #   unless @item.valid?
-    #     flash.now[:alert] = @item.errors.full_messages
-    #     @item.images.new
-    #     render :new and return
-    #   end
-    #   if @item.save
-    #     redirect_to root_path
-    #   else
-    #     @item.images.new
-    #     render :new
-    #   end
-    # end
 
   private
 
@@ -54,7 +45,7 @@ class ItemsController < ApplicationController
                                   :shipping_days_id, 
                                   :prefectures_id,  
                                   :user_id,
-                                  images_attributes: {image: []}
+                                  images_attributes: [:image]
                                  ).merge(user_id: current_user.id)
   end
 
