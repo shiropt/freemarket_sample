@@ -54,7 +54,8 @@ class ItemsController < ApplicationController
                                   :shipping_days_id, 
                                   :prefectures_id,  
                                   :user_id,
-                                  images_attributes: [:id, :image]
+                                  images_attributes: {image: []}
                                  ).merge(user_id: current_user.id)
   end
+
 end
