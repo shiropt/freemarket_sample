@@ -3,10 +3,10 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  before_action :set_parents, only: [:new, :create, :edit, :update]
 
   # GET /resource/sign_up
   def new
-    @parents = Category.where(ancestry: nil)
     @user = User.new
     @user.build_profile
     @user.build_address
@@ -14,19 +14,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    @parents = Category.where(ancestry: nil)
     super
   end
 
   # GET /resource/edit
   def edit
-    @parents = Category.where(ancestry: nil)
     super
   end
 
   # PUT /resource
   def update
-    @parents = Category.where(ancestry: nil)
     super
     redirect_to root_path
   end
@@ -51,7 +48,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.update_without_password(params)
   end
 
-
+  def set_parents
+    @parents = Category.where(ancestry: nil)
+  end
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [
