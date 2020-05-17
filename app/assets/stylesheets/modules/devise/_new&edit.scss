@@ -91,6 +91,7 @@
       border-bottom:solid 1px rgb(205, 205, 205);
       text-align: center;
       line-height: 100px;
+      letter-spacing: 0.1em;
     }
     .user__form{
       padding: 40px 150px;
@@ -150,6 +151,7 @@
         padding: 10px;
         border: none;
         background-color: $main-color;
+        letter-spacing: 0.5em;
       }
     }
   }
