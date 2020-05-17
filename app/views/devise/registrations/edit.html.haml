@@ -1,6 +1,5 @@
 .new-registration
   .new-registration__header
-  フリマアプリ（仮）
   .new-registration__main
     %h2.new-registration__main__top 会員情報変更
     = form_with model: @user, url: user_registration_path,  class: 'user__form',local: true do |f|
@@ -15,4 +14,5 @@
         %span.field--span 必須
         = f.email_field :email, placeholder: '例)hoge@hoge.jp', class: "field-input"
       = render "new.edit",  f: f
-  = render "devise/shared/links"
+      .actions
+        = f.submit "変 更 を 登 録", class: "submit"

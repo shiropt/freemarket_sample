@@ -1,29 +1,35 @@
 .new-registration
   .new-registration__header
-  フリマアプリ（仮）
   .new-registration__main
     %h2.new-registration__main__top 新規会員登録
     = form_with model: @user, url: user_registration_path,  class: 'user__form',local: true do |f|
-      = render "devise/shared/error_messages", resource: resource
       .field
         = f.fields_for :profile, @user.profile do |p|
           %label.field--title ニックネーム
           %span.field--span 必須
           = p.text_field :nickname, placeholder: '例)メルカリ太郎', class: "field-input"
+          - if resource.profile.errors.include?(:nickname)
+            %p.field-error= resource.profile.errors.full_messages_for(:nickname).first
       .field
         %label.field--title メールアドレス
         %span.field--span 必須
         = f.email_field :email, placeholder: '例)hoge@hoge.jp', class: "field-input"
+        - if resource.errors.include?(:email)
+          %p.field-error= resource.errors.full_messages_for(:email).first
       .field
         %label.field--title パスワード
         %span.field--span 必須
         = f.password_field :password, placeholder: '7文字以上の半角英数字', autocomplete: "new-password", class: "field-input"
         %p.password--attention ※英字と数字の両方を含めて設定してください
+        %br/
+        - if resource.errors.include?(:password)
+          %p.field-error= resource.errors.full_messages_for(:password).first
       .field
         %label.field--title 確認用パスワード
         %span.field--span 必須
         = f.password_field :password_confirmation, placeholder: '7文字以上の半角英数字', autocomplete: "new-password",class: "field-input"
+        - if resource.errors.include?(:password_confirmation)
+          %p.field-error= resource.errors.full_messages_for(:password_confirmation).first
       = render "new.edit",  f: f
-      .actions
-        = f.submit "Sign up"
-  = render "devise/shared/links"
+      .field
+        = f.submit "入 力 完 了", class: "submit"

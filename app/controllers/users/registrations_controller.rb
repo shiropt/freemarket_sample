@@ -6,6 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
+    @parents = Category.where(ancestry: nil)
     @user = User.new
     @user.build_profile
     @user.build_address
@@ -13,17 +14,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    @parents = Category.where(ancestry: nil)
     super
   end
 
   # GET /resource/edit
   def edit
+    @parents = Category.where(ancestry: nil)
     super
   end
 
   # PUT /resource
   def update
+    @parents = Category.where(ancestry: nil)
     super
+    redirect_to root_path
   end
 
   # DELETE /resource
@@ -65,7 +70,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # If you have extra params to permit, append them to the sanitizer.
-  def configure_account_update_param
+  def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [
       :last_name,
       :first_name,

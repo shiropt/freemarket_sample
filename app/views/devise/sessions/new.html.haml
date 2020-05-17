@@ -1,17 +1,21 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.new-registration
+  .new-registration__header
+  .new-registration__main
+    %h2.new-registration__main__top ロ グ イ ン
+    %p.sign-in__error=alert
+    = form_with model: @user, url: user_session_path, class: 'user__form',local: true do |f|
+      .field
+        %label.field--title メールアドレス
+        %br/
+        = f.email_field :email, class: "field-input"
+        - if resource.errors.include?(:email)
+          %p.field-error= resource.errors.full_messages_for(:email).first
+      .field
+        %label.field--title パスワード
+        %br/
+        = f.password_field :password, class: "field-input"
+        - if devise_mapping.rememberable?
+          = f.check_box :remember_me
+          = f.label :remember_me
+      .field
+        = f.submit "ロ グ イ ン", class: "submit"
