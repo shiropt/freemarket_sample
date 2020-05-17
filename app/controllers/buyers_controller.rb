@@ -1,5 +1,9 @@
 class BuyersController < ApplicationController
-  def index
+ 
+  def show
+    @parents = Category.where(ancestry: nil)
+    @item = Item.find(params[:id])
+    
   end
 
   def done
