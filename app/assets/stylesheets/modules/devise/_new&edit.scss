@@ -1,0 +1,157 @@
+@mixin field-input() {
+  height: 50px;
+  width: 100%;
+  margin-top: 7px;
+  padding: 10px;
+  border: solid 1px  rgb(205, 205, 205);
+  border-radius: 4px;
+}
+@mixin field-input-name() {
+  height: 50px;
+  width: 47%;
+  margin-top: 10px;
+  padding: 10px;
+  border: solid 1px  rgb(205, 205, 205);
+  border-radius: 4px;
+}
+@mixin span() {
+  font-size: 12px;
+  margin-left: 5px;
+  padding: 4px;
+  border-radius: 2px;
+  color: white;
+}
+@mixin select-btn(){
+  height: 50px;
+  margin-top: 7px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+// p要素===========================
+.password--attention {
+  font-size: 13px;
+  color: #888;
+  display: inline;
+}
+.field-error{
+  font-size: 13px;
+  color: rgb(255, 94, 94);
+  display: inline;
+}
+.field-error__right{
+  font-size: 13px;
+  color: rgb(255, 94, 94);
+  margin-left: 215px;
+  display: inline;
+}
+.sign-in__error{
+  font-size: 17px;
+  color: rgb(255, 94, 94);
+  background-color: red($color: #ffa7a7);
+  text-align: center;
+}
+// ==============================
+// 性別ラジオボックスデザイン========
+.field .radio_btn {
+  display: none;
+  }
+.field .radio_btn + label {
+  height: 45px;
+  width: 32.5%;
+  display: inline-block;
+  color: white;
+  border-radius: 10px;
+  margin-top: 10px;
+  background-color:rgb(154, 154, 154);
+  line-height: 45px;
+  cursor: pointer;
+}
+.field .radio_btn:checked + label {
+  color: #fff;
+  background-color: $main-color;
+  transition: 0.5s;
+  line-height: 45px;
+}
+//==============================
+.new-registration{
+  height: 100%;
+  font-size: 15px;
+  &__main{
+    width: 700px;
+    margin: auto;
+    background-color: white;
+    &__top{
+      height: 100px;
+      width: 100%;
+      font-size: 25px;
+      font-weight: 600;
+      border-bottom:solid 1px rgb(205, 205, 205);
+      text-align: center;
+      line-height: 100px;
+      letter-spacing: 0.1em;
+    }
+    .user__form{
+      padding: 40px 150px;
+      .field{
+        height: 120px;
+        margin-top: 30px;
+        &--title{
+          font-weight: 500;
+          line-height: 1em;
+        }
+        &--span{
+          @include span ();
+          background-color: rgb(255, 46, 46);
+        }
+        &--span--optional{
+          @include span ();
+          background-color: rgb(143, 143, 143);
+        }
+        .field-input{
+          @include field-input ();
+        }
+        .field-input__name--left{
+          @include field-input-name ();
+        }
+        .field-input__name--right{
+          @include field-input-name ();
+          float: right;
+        }
+        label {
+          text-align: center;
+        }
+      }
+      .field__birth-day{
+        position: relative;
+        height: 120px;
+        margin-top: 30px;
+        select {
+          width: 27%;
+          @include select-btn ();
+        }
+      }
+      .field__prefecture{
+        position: relative;
+        height: 120px;
+        margin-top: 30px;
+        select {
+          width: 100%;
+          @include select-btn ();
+        }
+      }
+      .submit{
+        height: 50px;
+        width: 100%;
+        font-size: 20px;
+        color: white;
+        margin-top: 7px;
+        padding: 10px;
+        border: none;
+        background-color: $main-color;
+        letter-spacing: 0.5em;
+      }
+    }
+  }
+}
