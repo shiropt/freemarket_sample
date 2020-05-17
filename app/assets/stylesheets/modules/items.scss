@@ -118,7 +118,56 @@
       }
     }
   }
-
+  .seller-box{
+    padding-top:20px;
+    background-color: white;
+    color: whitesmoke;
+    width: 700px;
+    height: 150px;
+    margin: 10px auto 0;
+    text-align: center;
+    opacity: 0.8;
+    line-height: 40px;
+    &__edit{
+      display: block;
+  
+      margin: 0 auto;
+      width: 90%;
+      background-color: red;
+      height: 40px;
+    }
+    &__destroy{
+      margin: 20px auto ;
+      background-color:gray;
+      width: 90%;
+      height: 40px;
+    }
+    
+  }
+  .buyer-box{
+    padding-top:20px;
+    background-color: white;
+    color: whitesmoke;
+    width: 700px;
+    height: 85px;
+    margin: 10px auto 0;
+    text-align: center;
+    opacity: 0.8;
+    line-height: 40px;
+    &__btn{
+      display: block;
+  
+      margin: 0 auto;
+      width: 90%;
+      background-color: red;
+      height: 40px;
+    }
+    
+  }
+  
+  .box-link{
+    color: white;
+  }
   .comment{
   width: 700px;
   margin: 0 auto;
@@ -172,12 +221,10 @@
     text-decoration: none;
   }
   .more-pages{
-    width: 700px;
     height: 100px;
-    margin: 0 auto; 
+    margin-left:170px; 
     color:#3CCACE;
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 20px;
     text-decoration: none;
   }
   .link{

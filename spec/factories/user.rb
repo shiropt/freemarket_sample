@@ -21,8 +21,6 @@ FactoryBot.define do
     prefecture_id {"1"}
     city {"旭川"}
     block {"1-1-1"}
-    building {"hogeハイツ101"}
-    telephone_number {"09012345678"}
   end
 
 end

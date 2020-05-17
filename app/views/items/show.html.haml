@@ -1,52 +1,52 @@
 .item
   .item__wrapper
     .item__title
-      %h1 product1
+      %h1=@item.name
     .item__content
       .item__image
         .item__image__top
-          = image_tag "/a007.png",size: '360x230',class:"item__image__main"
+          = image_tag @item.images.first.image ,size: '360x230',class:"item__image__main"
         .item__image__bottom
-          = image_tag "/a007.png",size: '160x80',class:"other-img"
-          = image_tag "/a007.png",size: '160x80',class:"other-img"
-          = image_tag "/a007.png",size: '160x80',class:"other-img"
+          = image_tag @item.images.first.image,size: '160x80',class:"other-img"
+          = image_tag @item.images.first.image,class:"other-img"
+          = image_tag @item.images.first.image,class:"other-img"
        
       .item__price  
-        %h2 ¥10000
-        (税込み）送料込み
+        %h2 ¥#{@item.price}
+        = shipping_fee_side
+      -# items_helperで定義したif文を呼び出し
+        
       .item__description
-        %p 親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+        %p=@item.description
 
       .item__info
         %table 
           %tbody
             %tr
               %th 出品者
-              %td hoge
+              %td=@user.nickname
             %tr
               %th カテゴリー
-              %td= link_to "メンズジャケット/アウターノーカラージャケット","#",class:"link" 
+              %td= link_to @categories.parent.name,category_path(@categories.parent)
             %tr
               %th ブランド
-              %td
+              %td=@item.brand
             %tr
               %th 商品のサイズ
-              %td
+              %td=@item.size
             %tr
               %th 商品の状態
-              %td 新品/未使用
+              %td=@item.condition
             %tr
               %th 配送料の負担
-              %td 着払い（購入者負担）
-            %tr
-              %th 配送の方法
-              %td
+              -# items_helperで定義したif文を呼び出し
+              %td= shipping_fee_side
             %tr
               %th 発送元地域
-              %td= link_to "青森県","#",class:"link" 
+              %td=@prefecture.name
             %tr
               %th 発送日の目安
-              %td 1-2日で発送
+              %td #{@item.shipping_days}日
       .bottom-content
         .favorites
           = icon('fa', 'star') 
@@ -55,6 +55,18 @@
           = link_to '#' ,class:"notice-link"do
             = icon('fa', 'flag')
             不適切な商品の通報
+
+  -if user_signed_in? && current_user.id == @item.user_id
+    .seller-box
+      .seller-box__edit
+        =link_to "商品の編集","#",class:"box-link"
+      .seller-box__destroy
+        =link_to "商品の削除", "#",class:"box-link"
+  -elsif user_signed_in? 
+    .buyer-box
+      .buyer-box__btn
+        =link_to "購入画面へ進む","#",class:"box-link"
+   
 
   .comment
     .comment__form
@@ -75,5 +87,5 @@
         後ろの商品>
    
   .more-pages
-    = link_to '#', class:"link" do
-      ベビー・キッズをもっと見る
+    #{link_to @categories.parent.name,category_path(@categories.parent), class:"link"}をもっと見る
+  
