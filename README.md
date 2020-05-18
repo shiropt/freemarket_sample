@@ -122,14 +122,14 @@
 |description      |text     |null: false                   |
 |price            |integer  |null: false                   |
 |size_id          |integer  |                              |@
-|category_id      |integer  |null: false, foreign_key: true|
-|brand            |integer  |                              |#変更
+|category_id      |integer  |null: false                   |
+|brand            |string   |                              |#変更
 |condition_id     |integer  |null: false                   |#変更 @
 |shipping_fee_side|boolean  |null: false                   |
 |prefectures_id   |integer  |null: false                   |@
 |shipping_days_id |integer  |                              |@
 |user_id          |integer  |null: false                   |# reference追加
-|purchased_info_id|integer  |null: false, foreign_key: true|#追記、# reference 追加
+|purchased_info_id|integer  |             foreign_key: true|#追記、# reference 追加
 
 ### Association  
 - belongs_to :user                       # belongs_to :brand消去
