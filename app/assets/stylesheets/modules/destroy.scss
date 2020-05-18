@@ -1,0 +1,35 @@
+.delete-wrapper{
+  height: 300px;
+  width: 700px;
+  background-color: white;
+  margin: 0 auto 50px;
+
+
+  &__message{
+    margin:50px auto 0;
+    padding-top: 20px;
+    text-align: center;
+    width:390px;
+    font-size:24px ;
+    height: 53px;
+    line-height: 53px;
+
+  }
+
+  .return-button{
+    margin:0 auto ;
+    background-color:#3CCACE ;
+    margin-top: 140px;
+    width:390px;
+    font-size:24px ;
+    height: 53px;
+    line-height: 53px;
+    display:block;
+    text-align:center;
+    color: white;
+    border-radius: 100px;
+  }
+  .link{
+    color: white;
+  }
+}

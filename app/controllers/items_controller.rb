@@ -6,10 +6,16 @@ class ItemsController < ApplicationController
   
   def show
   @item = Item.find(params[:id])
-  @user = Profile.find(params[:id])
   @parents = Category.where(ancestry: nil)
   @prefecture = Prefecture.find(params[:id])
   @categories = Category.find(params[:id])
+  
+end
+
+def destroy
+  @parents = Category.where(ancestry: nil)
+  item = Item.find(params[:id])
+  item.destroy
 
 end
 

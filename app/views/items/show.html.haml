@@ -24,10 +24,11 @@
           %tbody
             %tr
               %th 出品者
-              %td=@user.nickname
+              -# プロフィールのnicknameに変更する必要あり
+              %td=@item.user.first_name
             %tr
               %th カテゴリー
-              %td= link_to @categories.parent.name,category_path(@categories.parent)
+              %td= link_to @item.category.parent.name,category_path(@categories.parent)
             %tr
               %th ブランド
               %td=@item.brand
@@ -61,7 +62,7 @@
       .seller-box__edit
         =link_to "商品の編集","#",class:"box-link"
       .seller-box__destroy
-        =link_to "商品の削除", "#",class:"box-link"
+        =link_to "商品の削除", item_path(@item),method: :delete, data: { confirm: '削除しますか？' },class:"box-link"
   -elsif user_signed_in? 
     .buyer-box
       .buyer-box__btn
