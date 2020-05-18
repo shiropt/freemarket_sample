@@ -27,11 +27,11 @@
 |Column          |Type    |Options                            |
 |----------------|--------|-----------------------------------|
 |post_code       |integer |null: false                        |
-|prefectures_id  |integer |null: false                        |@
+|prefectures_id  |integer |null: false                        |
 |city            |string  |null: false                        |
 |block           |string  |null: false                        |
 |building        |string  |                                   |
-|telephone_number|integer |                                   |
+|telephone_number|string  |                                   |
 |user_id         |integer |null: false, foreign_key: true     |# referenceに変更
 
 ### Association
