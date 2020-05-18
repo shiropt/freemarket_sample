@@ -83,6 +83,8 @@
           background-color: #fff;
           visibility:hidden;
           width: 230px;
+          height: 700px;
+          z-index: 1;
         }
         .parent-content:hover{
 
@@ -92,8 +94,8 @@
         .category:hover .parent {
           visibility:visible;
         }
+      
         .child{  
-          height: 700px;
           position: absolute;
           left:230px;
           top:38px;
@@ -102,11 +104,9 @@
           visibility:visible;
         }
         .grandchild{
-          height: 700px;
           position: absolute;
           left:230px;
           top:0px;
-          z-index: 1;
         }
         .child-content:hover .grandchild{
           visibility:visible;
