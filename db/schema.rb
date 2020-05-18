@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
     t.string "block", null: false
     t.string "building"
     t.integer "telephone_number"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.integer "customer_id", null: false
     t.integer "card_id", null: false
     t.datetime "created_at", null: false
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "nickname", null: false
     t.string "image"
     t.text "profile"
@@ -115,5 +115,8 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
   add_foreign_key "purchased_infos", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "comments", "items"
+  add_foreign_key "addresses", "users"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "credit_cards","users"
  
 end
