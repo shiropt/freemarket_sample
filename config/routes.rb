@@ -4,7 +4,7 @@ Rails.application.routes.draw do
                     sessions: 'users/sessions' }
   resources :items
   resources :category, only:[:index,:show]
-  root 'items#index'
+  root 'items#new'
 
 end
 
