@@ -59,17 +59,17 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
     t.string "name", null: false
     t.text "description", null: false
     t.integer "price", null: false
-    t.string "size_id"
+    t.integer "size_id"
     t.integer "category_id", null: false
     t.string "brand"
     t.integer "condition_id", null: false
     t.boolean "shipping_fee_side", null: false
     t.integer "shipping_days_id", null: false
     t.integer "prefectures_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "purchased_info_id"
+    t.bigint "purchased_info_id"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -115,5 +115,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
   add_foreign_key "purchased_infos", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "comments", "items"
- 
+  add_foreign_key "items", "users"
+  add_foreign_key "items", "purchased_infos"
+
 end
