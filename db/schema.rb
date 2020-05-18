@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "item_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
     t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -113,4 +113,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
   add_foreign_key "images", "items"
   add_foreign_key "purchased_infos", "items"
   add_foreign_key "purchased_infos", "users"
+  add_foreign_key "comments", "users"
+  add_foreign_key "comments", "items"
+ 
 end
