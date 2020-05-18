@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
     t.string "brand"
     t.integer "condition_id", null: false
     t.boolean "shipping_fee_side", null: false
-    t.integer "shipping_days_id", null: false
+    t.integer "shipping_day_id", null: false
     t.integer "prefectures_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

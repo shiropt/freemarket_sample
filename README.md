@@ -138,7 +138,7 @@
 - belongs_to_active_hash :prefecture
 - belongs_to_active_hash :size
 - belongs_to_active_hash :condition    #追記
-- belongs_to_active_hash :shipping_days    #追記→item model shipping_daysに変更
+- belongs_to_active_hash :shipping_day
 - has_many :images
 - has_many :comments
 
