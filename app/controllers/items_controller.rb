@@ -11,8 +11,8 @@ class ItemsController < ApplicationController
       @item = Item.new
       @item.images.build
     else
-      flash[:notice] = "商品の出品にはユーザー登録、もしくはログインをしてください"
-      redirect_to signup_select_signup_index_path
+      flash[:alert] = "商品の出品にはユーザー登録、もしくはログインをしてください"
+      redirect_to new_user_registration_path
     end
   end
 
@@ -20,16 +20,22 @@ class ItemsController < ApplicationController
     #テスト機能未実装
     def create
       @item = Item.new(item_params)
-      unless @item.valid?
-        flash.now[:alert] = @item.errors.full_messages
-        @item.images.new
-        render :new and return
-      end
+      # unless @item.valid?
+      #   flash.now[:alert] = @item.errors.full_messages
+      #   @item.images.new
+      #   render :new and return
+      # end
       if @item.save
-        flash[:notice] = "「#{@item.name}」を出品しました"
+        flash[:success] = "「#{@item.name}」を出品しました"
         redirect_to root_path
       else
-        render :new
+        # 画像を残せないのでこの仕様は保留
+        # flash.now[:alert] = @item.errors.full_messages
+        # if @item.images.empty?
+        #   @item.images.build
+        # end
+        # render :new and return
+        redirect_to new_item_path, alert: "出品できません。入力必須項目を確認してください"
       end
     end
 

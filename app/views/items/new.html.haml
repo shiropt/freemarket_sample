@@ -102,8 +102,9 @@
                 必須
             .price-input
               ¥
-              = f.text_field :price, class: "price-input__form", placeholder: "0"
-          -# 手数料と利益の計算は最終スプリントでするためたぶんコメントアウトにする予定
+              = f.number_field :price, class: "price-input__form", placeholder: "0", type: "number"
+          -# 手数料と利益の計算は最終スプリントでする
+          -# リリースに間に合わない場合手数料と販売利益部はコメントアウトにする予定
           .sales-fee
             .sales-fee__label
               販売手数料(10%)
