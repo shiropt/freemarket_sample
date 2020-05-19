@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-
-  devise_for :users, controllers: { registrations: 'users/registrations' }
-  resources :items, only:[:index, :show]
+  get 'buyers/index'
+  get 'buyers/done'
+ 
+  devise_for :users,
+     controllers: { registrations: 'users/registrations',
+                    sessions: 'users/sessions' }
+  resources :items
   resources :category, only:[:index,:show]
-  root 'items#index'
+  root 'items#new'
 
 end
 
