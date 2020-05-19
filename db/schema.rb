@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
     t.string "city", null: false
     t.string "block", null: false
     t.string "building"
-    t.integer "telephone_number"
-    t.integer "user_id", null: false
+    t.string "telephone_number"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -32,15 +32,15 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "item_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
     t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.integer "customer_id", null: false
     t.integer "card_id", null: false
     t.datetime "created_at", null: false
@@ -59,21 +59,21 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
     t.string "name", null: false
     t.text "description", null: false
     t.integer "price", null: false
-    t.string "size_id"
+    t.integer "size_id"
     t.integer "category_id", null: false
     t.string "brand"
     t.integer "condition_id", null: false
     t.boolean "shipping_fee_side", null: false
-    t.integer "shipping_days_id", null: false
+    t.integer "shipping_day_id", null: false
     t.integer "prefectures_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "purchased_info_id"
+    t.bigint "purchased_info_id"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "nickname", null: false
     t.string "image"
     t.text "profile"
@@ -113,4 +113,12 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
   add_foreign_key "images", "items"
   add_foreign_key "purchased_infos", "items"
   add_foreign_key "purchased_infos", "users"
+  add_foreign_key "comments", "users"
+  add_foreign_key "comments", "items"
+  add_foreign_key "addresses", "users"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "credit_cards","users"
+  add_foreign_key "items", "users"
+  add_foreign_key "items", "purchased_infos"
+
 end

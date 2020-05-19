@@ -25,12 +25,12 @@
               = i.file_field :image, class: "item-photo__input-box__image__hidden", name: "item[images_attributes[5][image]]"
 
         .item-overview
-          .name
-            .name__label
+          .item-name
+            .item-name__label
               商品名
-              %span.name__label__require
+              %span.item-name__label__require
                 必須
-            = f.text_field :name, class: "name__form", placeholder: "40文字まで"
+            = f.text_field :name, class: "item-name__form", placeholder: "40文字まで"
           .description
             .description__label
               商品説明

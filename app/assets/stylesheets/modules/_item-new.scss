@@ -65,8 +65,9 @@
         height: 416px;
         padding: 20px;
         border: 1px solid rgb(245, 245, 245);
-        .name{
-          height: 118px;;
+        .item-name{
+          height: 118px;
+          margin-top: 24px;
           &__label {
             &__require {
               background-color: #3CCACE;
