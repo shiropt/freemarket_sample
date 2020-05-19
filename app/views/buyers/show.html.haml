@@ -1,0 +1,49 @@
+.buy-page
+  .buy-page__wrapper
+    .buy-page__wrapper__title
+      %h2 購入内容の確認
+    .item-info
+      .item-info__image
+        = image_tag @item.images.first.image ,size: '360x230'
+      .item-info__right
+        .item-info__right__title
+          =@item.name
+        .item-info__right__price
+          ¥#{@item.price}
+        .item-info__right__shippng-fee
+          = shipping_fee_side
+    .payment-amount
+      .payment-amount__left
+        支払い金額  
+      .payment-amount__right
+        ¥#{@item.price}
+    .payment-method
+      .payment-method__left
+        支払い方法 
+        %br
+        クレジットカード 
+        %br
+        ************
+        %br
+        有効期限 00 / 00
+        %br
+        master-card
+      .payment-method__right
+        変更する
+    .shipping-address
+      .shipping-address__left
+        配送先
+        %br
+        〒003-0853 
+        %br
+        北海道 札幌市○○区 
+        %br
+        桜木 花道
+
+      .shipping-address__right
+        変更する
+
+    .attention-message
+      郵便局/コンビニ受取をご希望の方は、購入後に取引画面から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
+    %button{type: "button"}
+      購入する

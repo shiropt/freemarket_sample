@@ -1,7 +1,28 @@
 ja:
   activerecord:
     attributes:
+      profile:
+        nickname: ニックネーム
+      address:
+        post_code: 郵便番号
+        prefecture_id: 都道府県
+        city: 市町村
+        block: 番地
+        building: 建物名
+        telephone_number: 電話番号
       user:
+        last_name: 妙
+        first_name: 名
+        last_name_kana: 妙(かな)
+        first_name_kana: 名(かな)
+        gender: 性別
+        birth_day: 生年月日
+        post_code: 郵便番号
+        prefecture_id: 都道府県
+        city: 市町村
+        block: 番地
+        building: 建物名
+        telephone_number: 電話番号
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
