@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
       @item.images.build
     else
       flash[:notice] = "商品の出品にはユーザー登録、もしくはログインをしてください"
-      redirect_to signup_select_signup_index_path
+      redirect_to new_user_registration_path
     end
   end
 
