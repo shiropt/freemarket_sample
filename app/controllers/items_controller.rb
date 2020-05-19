@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
                                   :brand,
                                   :condition_id, 
                                   :shipping_fee_side, 
-                                  :shipping_days_id, 
+                                  :shipping_day_id, 
                                   :prefectures_id,  
                                   :user_id,
                                   images_attributes: [:image]
@@ -58,12 +58,12 @@ class ItemsController < ApplicationController
   end
   
   def show
-  @item = Item.find(params[:id])
-  @user = Profile.find(params[:id])
-  @parents = Category.where(ancestry: nil)
-  @prefecture = Prefecture.find(params[:id])
-  @categories = Category.find(params[:id])
+    @item = Item.find(params[:id])
+    @user = Profile.find(params[:id])
+    @parents = Category.where(ancestry: nil)
+    @prefecture = Prefecture.find(params[:id])
+    @categories = Category.find(params[:id])
 
-end
+  end
 
 end

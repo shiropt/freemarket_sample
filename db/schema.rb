@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "fk_rails_48c9e0c5a2"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -37,6 +38,8 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
     t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "fk_rails_7bdc86a126"
+    t.index ["user_id"], name: "fk_rails_03de2dc08c"
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -45,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
     t.integer "card_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "fk_rails_069bf994f3"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -70,6 +74,8 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "purchased_info_id"
+    t.index ["purchased_info_id"], name: "fk_rails_29679f1c36"
+    t.index ["user_id"], name: "fk_rails_d4b6334db2"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -79,6 +85,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
     t.text "profile"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "fk_rails_e424190865"
   end
 
   create_table "purchased_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -110,15 +117,14 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "users"
+  add_foreign_key "comments", "items"
+  add_foreign_key "comments", "users"
+  add_foreign_key "credit_cards", "users"
   add_foreign_key "images", "items"
+  add_foreign_key "items", "purchased_infos"
+  add_foreign_key "items", "users"
+  add_foreign_key "profiles", "users"
   add_foreign_key "purchased_infos", "items"
   add_foreign_key "purchased_infos", "users"
-  add_foreign_key "comments", "users"
-  add_foreign_key "comments", "items"
-  add_foreign_key "addresses", "users"
-  add_foreign_key "profiles", "users"
-  add_foreign_key "credit_cards","users"
-  add_foreign_key "items", "users"
-  add_foreign_key "items", "purchased_infos"
-
 end

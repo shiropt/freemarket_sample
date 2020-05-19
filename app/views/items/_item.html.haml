@@ -1,7 +1,7 @@
 - @items.each do |item|
   .list
     = link_to item_path(item.id) do
-      = image_tag item.images.first.image, class: "img"
+      = image_tag item.images.first.image.url, class: "img"
     .list__details
       %h3.name
         = link_to item.name, item_path(item.id)

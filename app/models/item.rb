@@ -8,15 +8,15 @@ class Item < ApplicationRecord
             :category_id,
             :condition_id,
             :shipping_fee_side, 
-            :shipping_days_id,
+            :shipping_day_id,
             :prefectures_id,
             :user_id,
             presence: true
 
   validates :images, presence: true
   
-  validates :price, :numericality => { :greater_than => 299 }
-  validates :price, :numericality => { :less_than => 9999999  }
+  validates :price, :numericality => { :greater_than_or_equal_to => 300 }
+  validates :price, :numericality => { :less_than => 10000000 }
 
   belongs_to_active_hash :size
   belongs_to_active_hash :prefecture
