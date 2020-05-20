@@ -22,13 +22,6 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "fk_rails_48c9e0c5a2"
-  end
-
-  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,6 +58,14 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
     t.index ["item_id"], name: "index_images_on_item_id"
   end
 
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_images_on_item_id"
+  end
+
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
@@ -80,8 +81,6 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "purchased_info_id"
-    t.index ["purchased_info_id"], name: "fk_rails_29679f1c36"
-    t.index ["user_id"], name: "fk_rails_d4b6334db2"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -123,14 +122,44 @@ ActiveRecord::Schema.define(version: 2020_05_14_090850) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "addresses", "users"
-  add_foreign_key "comments", "items"
-  add_foreign_key "comments", "users"
-  add_foreign_key "credit_cards", "users"
+  create_table "purchased_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.date "purchase_date", null: false
+    t.integer "shipping_fee", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_purchased_infos_on_item_id"
+    t.index ["user_id"], name: "index_purchased_infos_on_user_id"
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.integer "gender", null: false
+    t.date "birth_day", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
   add_foreign_key "images", "items"
-  add_foreign_key "items", "purchased_infos"
-  add_foreign_key "items", "users"
-  add_foreign_key "profiles", "users"
   add_foreign_key "purchased_infos", "items"
   add_foreign_key "purchased_infos", "users"
+  add_foreign_key "comments", "users"
+  add_foreign_key "comments", "items"
+  add_foreign_key "addresses", "users"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "credit_cards","users"
+  add_foreign_key "items", "users"
+  add_foreign_key "items", "purchased_infos"
+
 end
