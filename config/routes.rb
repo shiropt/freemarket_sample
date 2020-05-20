@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :users,
   controllers: { registrations: 'users/registrations',
     sessions: 'users/sessions' }
-    resources :items
+    resources :items, except: [:edit, :updata, :destroy]
     resources :category, only:[:index,:show]
     resources :users, only: [:show]
   root 'items#index'
