@@ -8,7 +8,7 @@ class Item < ApplicationRecord
             :category_id,
             :condition_id,
             :shipping_fee_side, 
-            :shipping_day_id,
+            :shipping_days_id,
             :prefectures_id,
             :user_id,
             presence: true

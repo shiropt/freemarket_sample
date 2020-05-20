@@ -5,9 +5,14 @@ Rails.application.routes.draw do
   devise_for :users,
      controllers: { registrations: 'users/registrations',
                     sessions: 'users/sessions' }
-  resources :items
+  resources :items do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
   resources :category, only:[:index,:show]
-  root 'items#new'
+  root 'items#index'
 
 end
 

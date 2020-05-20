@@ -12,7 +12,7 @@ FactoryBot.define do
     condition_id {1}
     shipping_fee_side {1}
     prefectures_id {1}
-    shipping_day_id {1}
+    shipping_days_id {1}
 
     association :category
   end

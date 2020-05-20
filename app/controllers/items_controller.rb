@@ -10,6 +10,18 @@ class ItemsController < ApplicationController
     if user_signed_in?
       @item = Item.new
       @item.images.build
+      def get_category_children
+        @category_children = Category.find_by(id: "#{params[:parent_id]}", ancestry: nil).children
+      end
+    
+      def get_category_grandchildren
+        @category_grandchildren = Category.find("#{params[:child_id]}").children
+      end
+      #セレクトボックスの初期値設定
+      # @category_parent_array = ["---"]
+      # Category.where(ancestry: nil).each do |parent|
+      #   @category_parent_array << parent.name
+     
     else
       flash[:alert] = "商品の出品にはユーザー登録、もしくはログインをしてください"
       redirect_to new_user_registration_path
@@ -17,27 +29,27 @@ class ItemsController < ApplicationController
   end
 
   # 商品出品機能
-    #テスト機能未実装
-    def create
-      @item = Item.new(item_params)
-      # unless @item.valid?
-      #   flash.now[:alert] = @item.errors.full_messages
-      #   @item.images.new
-      #   render :new and return
+  #テスト機能未実装
+  def create
+    @item = Item.new(item_params)
+    # unless @item.valid?
+    #   flash.now[:alert] = @item.errors.full_messages
+    #   @item.images.new
+    #   render :new and return
+    # end
+    if @item.save
+      flash[:success] = "「#{@item.name}」を出品しました"
+      redirect_to root_path
+    else
+      # 画像を残せないのでこの仕様は保留
+      # flash.now[:alert] = @item.errors.full_messages
+      # if @item.images.empty?
+      #   @item.images.build
       # end
-      if @item.save
-        flash[:success] = "「#{@item.name}」を出品しました"
-        redirect_to root_path
-      else
-        # 画像を残せないのでこの仕様は保留
-        # flash.now[:alert] = @item.errors.full_messages
-        # if @item.images.empty?
-        #   @item.images.build
-        # end
-        # render :new and return
-        redirect_to new_item_path, alert: "出品できません。入力必須項目を確認してください"
-      end
+      # render :new and return
+      redirect_to new_item_path, alert: "出品できません。入力必須項目を確認してください"
     end
+  end
 
   private
 
@@ -50,7 +62,7 @@ class ItemsController < ApplicationController
                                   :brand,
                                   :condition_id, 
                                   :shipping_fee_side, 
-                                  :shipping_day_id, 
+                                  :shipping_days_id, 
                                   :prefectures_id,  
                                   :user_id,
                                   images_attributes: [:image]

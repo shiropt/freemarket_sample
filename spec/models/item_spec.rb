@@ -2,6 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   describe '#create' do
+    # it "itemモデル項目全て存在すれば登録できること" do
+    #   user = build(:item)
+    #   item.valid?
+    #   expect(item).to be_valid
+    # end
 
     it 'user_idがない場合は登録できないこと' do
       item = FactoryBot.build(:item, user_id: nil)
@@ -53,9 +58,9 @@ RSpec.describe Item, type: :model do
     end
 
     it 'shipping_days_idがない場合は登録できないこと' do
-      item = build(:item, shipping_day_id: nil)
+      item = build(:item, shipping_days_id: nil)
       item.valid?
-      expect(item.errors[:shipping_day_id]).to include("を入力してください")
+      expect(item.errors[:shipping_days_id]).to include("を入力してください")
     end
 
   end
