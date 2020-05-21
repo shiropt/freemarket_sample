@@ -1,15 +1,21 @@
 Rails.application.routes.draw do
 
-  get 'buyers/index'
-  get 'buyers/done'
   
   devise_for :users,
   controllers: { registrations: 'users/registrations',
     sessions: 'users/sessions' }
-    resources :items, except: [:edit, :update, :destroy]
+    resources :items, except: [:edit, :update, :destroy] do
+      resources :buyers, only:[:index] do
+        collection do
+          get 'done', to: 'buyers#done'
+          post 'buy', to: 'buyers#buy'
+        end
+      end
+    end
     resources :category, only:[:index,:show]
     resources :users, only: [:show]
   root 'items#index'
+  resources :cards, only:[:index, :new, :create, :show, :destroy]
 
 end
 
