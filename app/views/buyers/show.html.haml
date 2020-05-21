@@ -4,7 +4,7 @@
       %h2 購入内容の確認
     .item-info
       .item-info__image
-        = image_tag @item.images.first.image ,size: '360x230'
+        = image_tag @item.images.first.image.url ,size: '360x230'
       .item-info__right
         .item-info__right__title
           =@item.name
@@ -29,19 +29,24 @@
         %br
         master-card
       .payment-method__right
-        変更する
+        =link_to"変更する", "#",class: "link"
     .shipping-address
       .shipping-address__left
         配送先
         %br
-        〒003-0853 
+        〒
+        =current_user.address.post_code
+        
         %br
-        北海道 札幌市○○区 
+        =current_user.address.city
+        =current_user.address.block
+        =current_user.address.building
         %br
-        桜木 花道
+        =current_user.last_name
+        =current_user.first_name
 
       .shipping-address__right
-        変更する
+        =link_to"変更する", "#",class: "link"
 
     .attention-message
       郵便局/コンビニ受取をご希望の方は、購入後に取引画面から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。

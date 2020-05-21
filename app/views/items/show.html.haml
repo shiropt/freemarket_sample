@@ -5,11 +5,11 @@
     .item__content
       .item__image
         .item__image__top
-          = image_tag @item.images.first.image ,size: '360x230',class:"item__image__main"
-        .item__image__bottom
-          = image_tag @item.images.first.image,size: '160x80',class:"other-img"
-          = image_tag @item.images.first.image,class:"other-img"
-          = image_tag @item.images.first.image,class:"other-img"
+          = image_tag @item.images.first.image.url ,size: '360x230'
+        .item__image__bottom__wrapper
+          - @item.images.each do|image|
+            .image-list
+              = image_tag image.image.url
        
       .item__price  
         %h2 ¥#{@item.price}
@@ -24,29 +24,29 @@
           %tbody
             %tr
               %th 出品者
-              %td=@user.nickname
+              %td=@item.user.profile.nickname
             %tr
               %th カテゴリー
-              %td= link_to @categories.parent.name,category_path(@categories.parent)
+              %td= link_to @item.category.name,category_path(@item.category.id)
             %tr
               %th ブランド
               %td=@item.brand
             %tr
               %th 商品のサイズ
-              %td=@item.size
+              %td=@item.size.name
             %tr
               %th 商品の状態
-              %td=@item.condition
+              %td=@item.condition.name
             %tr
               %th 配送料の負担
               -# items_helperで定義したif文を呼び出し
               %td= shipping_fee_side
             %tr
               %th 発送元地域
-              %td=@prefecture.name
+              %td
             %tr
               %th 発送日の目安
-              %td #{@item.shipping_days}日
+              %td
       .bottom-content
         .favorites
           = icon('fa', 'star') 
@@ -87,5 +87,4 @@
         後ろの商品>
    
   .more-pages
-    #{link_to @categories.parent.name,category_path(@categories.parent), class:"link"}をもっと見る
-  
+    #{link_to @item.category.name,category_path(@item.category.id), class:"link"}をもっと見る
