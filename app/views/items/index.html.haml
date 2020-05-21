@@ -90,14 +90,46 @@
     %h2.head ピックアップカテゴリー
     .items
       .items__head
-        %h3.title 新規投稿商品
-      .items__lists
-        = render "item"
+        %h3.title レディース新着アイテム
+        .items__lists
+          - @ladies.each do |item|
+            = render partial: "items/item", locals: { item: item }
+      .items__head
+        %h3.title メンズ新着アイテム
+        .items__lists
+          - @mens.each do |item|
+            = render partial: "items/item", locals: { item: item }
+      .items__head
+        %h3.title 家電・スマホ・カメラ新着アイテム
+        .items__lists
+          - @electrical_appliances.each do |item|
+            = render partial: "items/item", locals: { item: item }
+      .items__head
+        %h3.title おもちゃ・ホビー・グッズ新着アイテム
+        .items__lists
+          - @toys.each do |item|
+            = render partial: "items/item", locals: { item: item }
   .main__pickup#last
     %h2.head ピックアップブランド
     .items
       .items__head
-        %h3.title アーカイバ
-      .items__lists
-        = render "item"
+        %h3.title シャネル新着アイテム
+        .items__lists
+          - @chanel.each do |item|
+            = render partial: "items/item", locals: { item: item }
+      .items__head
+        %h3.title ルイヴィトン新着アイテム
+        .items__lists
+          - @vuitton.each do |item|
+            = render partial: "items/item", locals: { item: item }
+      .items__head
+        %h3.title シュプリーム新着アイテム
+        .items__lists
+          - @supreme.each do |item|
+            = render partial: "items/item", locals: { item: item }
+      .items__head
+        %h3.title ナイキ新着アイテム
+        .items__lists
+          - @nike.each do |item|
+            = render partial: "items/item", locals: { item: item }
 = render "items/footer"

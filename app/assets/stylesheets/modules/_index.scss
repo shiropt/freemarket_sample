@@ -11,7 +11,6 @@
 
 .header {
   padding: 0 60px;
-  background-color: white;
   &__inner {
     margin: 0 auto;
     width: 1040px;
@@ -48,6 +47,7 @@
           height: 36px;
           width: 36px;
           border: none;
+          padding: 0;
           .icon {
             height: 20px;
             width: 20px;
@@ -245,6 +245,7 @@
   }
   &__feature {
     padding: 60px 100px;
+    background-color: white;
     .head {
       text-align: center;
       font-weight: bold;
@@ -309,14 +310,15 @@
         }
       }
       &__lists {
-        width: 780px;
+        width: 1000px;
         margin: 26px auto;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         .list {
           width: 220px;
           display: inline-block;
           background-color: white;
+          margin-right: 10px;
           .img {
             width: 220px;
             height: 150px;
@@ -329,6 +331,7 @@
               line-height: 1.5;
               font-size: 16px;
               margin: 0;
+              color: black;
             }
             .price {
               font-size: 16px;
