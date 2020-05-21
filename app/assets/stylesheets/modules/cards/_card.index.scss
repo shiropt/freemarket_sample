@@ -1,0 +1,69 @@
+.card-index{
+  height: 100%;
+  font-size: 15px;
+  &__content{
+    width: 700px;
+    margin: auto;
+    background-color: white;
+    &__top{
+      height: 100px;
+      width: 100%;
+      font-size: 25px;
+      font-weight: 600;
+      border-bottom:solid 1px rgb(205, 205, 205);
+      text-align: center;
+      line-height: 100px;
+      letter-spacing: 0.1em;
+    }
+    &__main{
+      padding: 40px 150px;
+      &--number{
+        margin-top: 50px;
+      }
+      &--delete{
+        position: relative;
+        float: right;
+        font-size: 12px;
+        height: 15px;
+        width: 50px;
+        padding: 5px;
+        border: solid 1px  rgb(255, 106, 106);
+        border-radius: 4px;
+        text-align: center;
+        line-height: 15px;
+        .creditcard-info__delete{
+          display: block;
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      &--limit{
+
+      }
+      .new-card{
+        position: relative;
+        text-align: center;
+        padding-top: 20px;
+        height: 30px;
+        width: 100%;
+        font-size: 20px;
+        color: white;
+        margin-top: 20px;
+        padding: 10px;
+        letter-spacing: 0.3em;
+        background-color: $main-color;
+        .new-card-btn{
+          
+          display: block;
+          position: absolute;
+          
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
