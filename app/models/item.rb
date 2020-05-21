@@ -29,6 +29,6 @@ class Item < ApplicationRecord
   belongs_to :category
   has_one :purchased_info
   has_many :comments
-  has_many :images
+  has_many :images, foreign_key: :item_id, dependent: :destroy
   accepts_nested_attributes_for :images
 end
