@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
   end
 
   # 商品出品機能
-    #テスト機能未実装
+  #テスト機能未実装
     def create
       @item = Item.new(item_params)
       unless @item.valid?
@@ -33,6 +33,13 @@ class ItemsController < ApplicationController
       end
     end
 
+    def show
+      @item = Item.find(params[:id])
+      @parents = Category.where(ancestry: nil)
+  
+    
+    end
+    
   private
 
   def item_params
@@ -51,13 +58,5 @@ class ItemsController < ApplicationController
                                  ).merge(user_id: current_user.id)
   end
   
-  def show
-  @item = Item.find(params[:id])
-  @user = Profile.find(params[:id])
-  @parents = Category.where(ancestry: nil)
-  @prefecture = Prefecture.find(params[:id])
-  @categories = Category.find(params[:id])
-
-end
 
 end

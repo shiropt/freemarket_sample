@@ -5,7 +5,7 @@
   &__wrapper{
     background:white;
     width: 700px;
-    height: 900px;
+    height: 1000px;
     margin: 80px auto 25px;
     &__title{
       text-align: center;
@@ -48,11 +48,14 @@
       margin-top: 15px;
       line-height: 25px;
     }
+    .link{
+      color:$main-color;
+    }
 
 
     button{
       margin:0 auto ;
-      background-color:#3CCACE ;
+      background-color:$main-color ;
       margin-top: 40px;
       width:390px;
       font-size:24px ;

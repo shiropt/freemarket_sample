@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     end
     resources :category, only:[:index,:show]
     resources :users, only: [:show]
+    resources :buyers, only:[:show]
   root 'items#index'
   resources :cards, only:[:index, :new, :create, :show, :destroy]
 
