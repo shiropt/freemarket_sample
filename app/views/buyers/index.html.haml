@@ -4,7 +4,7 @@
       %h2 購入内容の確認
     .item-info
       .item-info__image
-        = image_tag @item.images.first.image ,size: '360x230'
+        = image_tag @item.images.first.image.url ,size: '360x230'
       .item-info__right
         .item-info__right__title
           =@item.name
@@ -45,5 +45,6 @@
 
     .attention-message
       郵便局/コンビニ受取をご希望の方は、購入後に取引画面から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
-    %button{type: "button"}
-      購入する
+    .buyer-box__btn
+    = form_tag(action: :buy, method: :post) do
+      %button.buy-button{type:"submit"} 購入する
