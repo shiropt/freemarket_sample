@@ -32,7 +32,7 @@ class BuyersController < ApplicationController
       if @purchased_info.update(user_id: current_user.id, item_id: @item.id, purchase_date: @today, shipping_fee: @item.shipping_fee_side)
         @item.update(purchased_info_id: @purchased_info.id)
         flash[:notice] = '購入しました。'
-        redirect_to 
+        redirect_to done_item_buyers_path
       else
         flash[:alert] = '購入に失敗しました。'
         redirect_to controller: 'items', action: 'index'
