@@ -1,5 +1,6 @@
 class BuyersController < ApplicationController
   require "payjp"
+  before_action :move_to_signed_in
   before_action :set_card, :set_item
 
   def index
@@ -43,5 +44,10 @@ class BuyersController < ApplicationController
 
   def set_item
     @item = Item.find(params[:item_id])
+  end
+
+  def move_to_signed_in
+    redirect_to new_user_session_path unless user_signed_in?
+    flash[:alert] = '商品の購入にはログインが必要です'
   end
 end
