@@ -7,24 +7,21 @@ class Item < ApplicationRecord
             :price,
             :category_id,
             :condition_id,
-            :shipping_fee_side, 
-            :shipping_days_id,
-            :prefectures_id,
+            :shipping_day_id,
+            :prefecture_id,
             :user_id,
             presence: true
-
+  validates :shipping_fee_side, inclusion: {in: [true, false]}
   validates :images, presence: true
   
-  validates :price, numericality: 
-            { only_integer: true,
-              greater_than_or_equal_to: 300,
-              less_than: 10000000}
+  validates :price, :numericality => { :greater_than_or_equal_to => 300 }
+  validates :price, :numericality => { :less_than => 10000000 }
 
   belongs_to_active_hash :size
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :condition
   belongs_to_active_hash :shipping_day
-  
+
   belongs_to :user, optional: true
   belongs_to :category
   has_one :purchased_info

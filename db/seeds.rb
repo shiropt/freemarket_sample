@@ -335,7 +335,7 @@ User.create!(
    Profile.create!(
      nickname: Faker::JapaneseMedia::OnePiece.character,
      profile: Faker::Lorem.paragraphs,
-    #  image: File.open('./app/assets/images/a003.png'),
+     image: File.open('./app/assets/images/a001.png'),
      user_id: User.find(n+1).id
      )
      Address.create!(
@@ -348,28 +348,28 @@ User.create!(
        user_id: User.find(n+1).id
        )
       end
-# Item.create!(
-#   name: "iphone12",
-#   description: "iPhone 11 Pro ミッドナイトグリーン 64 GB SIMフリー
-#   iPhoneSE買い増しにつき、お分けします。
-#     ケース使用でほぼ新品同様ですが、写真のように下部に擦り傷があります。
-#     機種名: iPhone 11 Pro
-#     カラー: ミッドナイトグリーン
-#     容量: 64 GB
-#     購入したキャリア: SIMフリー
-#     付属品: 充電ケーブル, ACアダプター, 説明書, 箱, イヤホン",
-#     price: 50000,
-#     size_id: 1,
-#     category_id: 930,
-#     brand: 'Apple',
-#     condition_id: 1,
-#     shipping_fee_side: 1,
-#     shipping_days_id: 1,
-#     prefectures_id: 3,
-#     user_id:1
-#     )
+Item.create!(
+  name: "iphone12",
+  description: "iPhone 11 Pro ミッドナイトグリーン 64 GB SIMフリー
+  iPhoneSE買い増しにつき、お分けします。
+    ケース使用でほぼ新品同様ですが、写真のように下部に擦り傷があります。
+    機種名: iPhone 11 Pro
+    カラー: ミッドナイトグリーン
+    容量: 64 GB
+    購入したキャリア: SIMフリー
+    付属品: 充電ケーブル, ACアダプター, 説明書, 箱, イヤホン",
+    price: 50000,
+    size_id: 1,
+    category_id: 930,
+    brand: 'Apple',
+    condition_id: 1,
+    shipping_fee_side: 1,
+    shipping_day_id: 1,
+    prefecture_id: 3,
+    user_id:1
+    )
     
-#     Image.create!(
-#       image: File.open('./app/assets/images/a003.png'),
-#       item_id: 1
-#       )
+    Image.create!(
+      image: File.open('./app/assets/images/a001.png'),
+      item_id: 1
+      )
