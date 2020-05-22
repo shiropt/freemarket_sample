@@ -1,15 +1,14 @@
-- @items.each do |item|
-  .list
-    = link_to item_path(item.id) do
-      = image_tag item.images.first.image.url, class: "img"
-    .list__details
-      %h3.name
-        = link_to item.name, item_path(item.id)
-      .price
-        %ul
-          %li 
-            = "#{item.price}円"
-          %li
-            = icon('fas', 'star')
-            0
-        %p (税込)
+.list
+  = link_to item_path(item.id) do
+    = image_tag item.images.first.image.url, class: "img"
+  .list__details
+    %h3.name
+      = link_to item.name, item_path(item.id), class: "name"
+    .price
+      %ul
+        %li 
+          = "#{item.price}円"
+        %li
+          = icon('fas', 'star')
+          0
+      %p (税込)

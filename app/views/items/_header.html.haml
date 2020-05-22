@@ -33,7 +33,7 @@
           %li.lists-right__login
             = link_to "ログアウト", destroy_user_session_path, method: :delete , class: "link"
           %li.lists-right__signup
-            = link_to "マイページ", "#" , class: "link"
+            = link_to "マイページ", user_path(current_user.id) , class: "link"
       - else
         %ul.lists-right
           %li.lists-right__login
