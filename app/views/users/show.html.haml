@@ -1,8 +1,9 @@
+= render "items/header"
 .mypage
   .mypage__list
     %ul.table1
       %li#mypage-list
-        = link_to "#" do
+        = link_to user_path(current_user.id) do
           %p.table-item#mypage-btn
             マイページ
             = icon('fas', 'chevron-right', class:'chevron')
@@ -12,7 +13,7 @@
             いいね！一覧
             = icon('fas', 'chevron-right', class:'chevron')
       %li
-        = link_to "#" do
+        = link_to new_item_path do
           %p.table-item
             出品する
             = icon('fas', 'chevron-right', class:'chevron')
@@ -51,24 +52,12 @@
           %p.table-item
             評価一覧
             = icon('fas', 'chevron-right', class:'chevron')
-    %h3.mypage-nav-head ペイ
-    %ul.table2
-      %li
-        = link_to "#" do
-          %p.table-item
-            売上・振込申請
-            = icon('fas', 'chevron-right', class:'chevron')
     %h3.mypage-nav-head 設定
     %ul.table3
       %li
-        = link_to "#" do
+        = link_to edit_user_registration_path do
           %p.table-item
-            プロフィール
-            = icon('fas', 'chevron-right', class:'chevron')
-      %li
-        = link_to "#" do
-          %p.table-item
-            発送元・お届け先住所変更
+            本人情報変更
             = icon('fas', 'chevron-right', class:'chevron')
       %li
         = link_to "#" do
@@ -76,22 +65,7 @@
             =link_to "支払い方法", cards_path
             = icon('fas', 'chevron-right', class:'chevron')
       %li
-        = link_to "#" do
-          %p.table-item
-            メール/パスワード
-            = icon('fas', 'chevron-right', class:'chevron')
-      %li
-        = link_to "#" do
-          %p.table-item
-            本人情報
-            = icon('fas', 'chevron-right', class:'chevron')
-      %li
-        = link_to "#" do
-          %p.table-item
-            電話番号の確認
-            = icon('fas', 'chevron-right', class:'chevron')
-      %li
-        = link_to "#" do
+        = link_to destroy_user_session_path do
           %p.table-item
             ログアウト
             = icon('fas', 'chevron-right', class:'chevron')
@@ -110,3 +84,6 @@
       .tabs
         %ul.content
           商品がありません
+= render "items/footer"
+= render "items/sell_btn"
+
