@@ -54,14 +54,12 @@ class ItemsController < ApplicationController
 
   end
   def destroy
-    if @item.user_id == current_user.id
-      if @item.destroy
-        flash[:success] = "「#{@item.name}」を削除しました"
-        redirect_to root_path
-       else
-        render action: :show,
-        alert: "「#{@item.name}」を削除出来ませんでした"
-      end
+    if @item.user_id == current_user.id && @item.destroy
+      flash[:success] = "「#{@item.name}」を削除しました"
+      redirect_to root_path
+    else
+      render action: :show,
+      alert: "「#{@item.name}」を削除出来ませんでした"
     end
   end
     
