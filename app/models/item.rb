@@ -7,12 +7,11 @@ class Item < ApplicationRecord
             :price,
             :category_id,
             :condition_id,
-            :shipping_fee_side, 
             :shipping_days_id,
             :prefectures_id,
             :user_id,
             presence: true
-
+  validates :shipping_fee_side, inclusion: {in: [true, false]}
   validates :images, presence: true
   
   validates :price, :numericality => { :greater_than_or_equal_to => 300 }

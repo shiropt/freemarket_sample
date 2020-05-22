@@ -14,16 +14,13 @@
           .item-photo__input-box
             
             /とりあえず画像を投稿出来る仕様
-            -# プレビュー表示、画像削除は後日実装 10枚投稿で２段にするかは未定
-            -# file_fieldを配列に格納するのが出来るなら後日実装
             = f.fields_for :images do |i|
-              = icon('fas', 'camera', class: "item-photo__input-box__icon")
-              = i.file_field :image, class: "item-photo__input-box__image__hidden", name: "item[images_attributes[1][image]]"
-              = i.file_field :image, class: "item-photo__input-box__image__hidden", name: "item[images_attributes[2][image]]"
-              = i.file_field :image, class: "item-photo__input-box__image__hidden", name: "item[images_attributes[3][image]]"
-              = i.file_field :image, class: "item-photo__input-box__image__hidden", name: "item[images_attributes[4][image]]"
-              = i.file_field :image, class: "item-photo__input-box__image__hidden", name: "item[images_attributes[5][image]]"
-
+              = i.file_field :image, class: "item-photo__input-box__image", name: "item[images_attributes[1][image]]"
+              = i.file_field :image, class: "item-photo__input-box__image", name: "item[images_attributes[2][image]]"
+              = i.file_field :image, class: "item-photo__input-box__image", name: "item[images_attributes[3][image]]"
+              = i.file_field :image, class: "item-photo__input-box__image", name: "item[images_attributes[4][image]]"
+              = i.file_field :image, class: "item-photo__input-box__image", name: "item[images_attributes[5][image]]"
+              
         .item-overview
           .item-name
             .item-name__label

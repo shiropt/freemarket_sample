@@ -17,10 +17,6 @@ class ItemsController < ApplicationController
       def get_category_grandchildren
         @category_grandchildren = Category.find("#{params[:child_id]}").children
       end
-      #セレクトボックスの初期値設定
-      # @category_parent_array = ["---"]
-      # Category.where(ancestry: nil).each do |parent|
-      #   @category_parent_array << parent.name
      
     else
       flash[:alert] = "商品の出品にはユーザー登録、もしくはログインをしてください"
@@ -29,14 +25,8 @@ class ItemsController < ApplicationController
   end
 
   # 商品出品機能
-  #テスト機能未実装
   def create
     @item = Item.new(item_params)
-    # unless @item.valid?
-    #   flash.now[:alert] = @item.errors.full_messages
-    #   @item.images.new
-    #   render :new and return
-    # end
     if @item.save
       flash[:success] = "「#{@item.name}」を出品しました"
       redirect_to root_path
