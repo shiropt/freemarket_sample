@@ -1,0 +1,112 @@
+.mypage
+  .mypage__list
+    %ul.table1
+      %li#mypage-list
+        = link_to "#" do
+          %p.table-item#mypage-btn
+            マイページ
+            = icon('fas', 'chevron-right', class:'chevron')
+      %li
+        = link_to "#" do
+          %p.table-item
+            いいね！一覧
+            = icon('fas', 'chevron-right', class:'chevron')
+      %li
+        = link_to "#" do
+          %p.table-item
+            出品する
+            = icon('fas', 'chevron-right', class:'chevron')
+      %li
+        = link_to "#" do
+          %p.table-item
+            下書き一覧
+            = icon('fas', 'chevron-right', class:'chevron')
+      %li
+        = link_to "#" do
+          %p.table-item
+            出品した商品 - 出品中
+            = icon('fas', 'chevron-right', class:'chevron')
+      %li
+        = link_to "#" do
+          %p.table-item
+            出品した商品 - 取引中
+            = icon('fas', 'chevron-right', class:'chevron')
+      %li
+        = link_to "#" do
+          %p.table-item
+            出品した商品 - 売却済み
+            = icon('fas', 'chevron-right', class:'chevron')
+      %li
+        = link_to "#" do
+          %p.table-item
+            購入した商品 - 取引中
+            = icon('fas', 'chevron-right', class:'chevron')
+      %li
+        = link_to "#" do
+          %p.table-item
+            購入した商品 - 過去の取引
+            = icon('fas', 'chevron-right', class:'chevron')
+      %li
+        = link_to "#" do
+          %p.table-item
+            評価一覧
+            = icon('fas', 'chevron-right', class:'chevron')
+    %h3.mypage-nav-head ペイ
+    %ul.table2
+      %li
+        = link_to "#" do
+          %p.table-item
+            売上・振込申請
+            = icon('fas', 'chevron-right', class:'chevron')
+    %h3.mypage-nav-head 設定
+    %ul.table3
+      %li
+        = link_to "#" do
+          %p.table-item
+            プロフィール
+            = icon('fas', 'chevron-right', class:'chevron')
+      %li
+        = link_to "#" do
+          %p.table-item
+            発送元・お届け先住所変更
+            = icon('fas', 'chevron-right', class:'chevron')
+      %li
+        = link_to "#" do
+          %p.table-item
+            支払い方法
+            = icon('fas', 'chevron-right', class:'chevron')
+      %li
+        = link_to "#" do
+          %p.table-item
+            メール/パスワード
+            = icon('fas', 'chevron-right', class:'chevron')
+      %li
+        = link_to "#" do
+          %p.table-item
+            本人情報
+            = icon('fas', 'chevron-right', class:'chevron')
+      %li
+        = link_to "#" do
+          %p.table-item
+            電話番号の確認
+            = icon('fas', 'chevron-right', class:'chevron')
+      %li
+        = link_to "#" do
+          %p.table-item
+            ログアウト
+            = icon('fas', 'chevron-right', class:'chevron')
+  .mypage__contents
+    = link_to "#" do
+      .mypage__contents__name
+        = image_tag("/material/icon/member_photo_noimage_thumb.png",height:60, width:60)
+        %h2 Hoge Hoge
+        .number
+          評価
+          %span.bold 0
+          出品数
+          %span.bold 0
+    .mypage__contents__items
+      %h2 &emsp;購入した商品
+      .tabs
+        %ul.content
+          商品がありません

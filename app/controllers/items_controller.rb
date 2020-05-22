@@ -41,6 +41,13 @@ class ItemsController < ApplicationController
     end
   end
 
+    def show
+      @item = Item.find(params[:id])
+      @parents = Category.where(ancestry: nil)
+  
+    
+    end
+    
   private
 
   def item_params
@@ -57,15 +64,6 @@ class ItemsController < ApplicationController
                                   :user_id,
                                   images_attributes: [:image]
                                  ).merge(user_id: current_user.id)
-  end
-  
-  def show
-    @item = Item.find(params[:id])
-    @user = Profile.find(params[:id])
-    @parents = Category.where(ancestry: nil)
-    @prefecture = Prefecture.find(params[:id])
-    @categories = Category.find(params[:id])
-
   end
 
 end
