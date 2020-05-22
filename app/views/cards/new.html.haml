@@ -1,7 +1,15 @@
 .card-new
   .card-new__content
     %h2.card-new__content__top クレジットカード登録
+    
     = form_with url:cards_path, method: :post, html: { name: "inputForm" },class:"card-form" do |f|
+      .card-content
+        = image_tag "/material/card/visa.jpg", class: "card__image"
+        = image_tag "/material/card/master.jpg", class: "card__image"
+        = image_tag "/material/card/jcb.jpg", class: "card__image"
+        = image_tag "/material/card/american.jpg", class: "card__image__american"
+        = image_tag "/material/card/diners.jpg", class: "card__image"
+        = image_tag "/material/card/discover.jpg", class: "card__image"
       .card-field
         %label.card-field--title カード番号
         %br/

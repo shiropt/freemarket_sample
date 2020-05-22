@@ -5,6 +5,7 @@
       クレジットカード一覧
       - if @card.present?
         .card-index__content__main--number
+          = image_tag "/material/card/#{@card_image}",width:'50',height:'25'
           %p= "**** **** **** " + @card_info.last4 #クレジットカードの下４桁を表示
         .card-index__content__main--delete
           = link_to "削除する", card_path(@card), method: :delete, class:"creditcard-info__delete", :style=>"color:red;"

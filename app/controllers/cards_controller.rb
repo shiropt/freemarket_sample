@@ -13,9 +13,26 @@ class CardsController < ApplicationController
       # pay.jpの顧客情報から、デフォルトで使うクレジットカードを取得する。
       @card_info = customer.cards.retrieve(customer.default_card)
       # クレジットカード情報から表示させたい情報を定義する。
+      #カード会社の画像習得
+      @card_brand = @card_info.brand
       # クレジットカードの有効期限を取得
       @exp_month = @card_info.exp_month.to_s
       @exp_year = @card_info.exp_year.to_s.slice(2,3) 
+
+      case @card_brand
+      when "Visa"
+        @card_image = "visa.jpg"
+      when "JCB"
+        @card_image = "jcb.jpg"
+      when "MasterCard"
+        @card_image = "master.jpg"
+      when "American Express"
+        @card_image = "american.jpg"
+      when "Diners Club"
+        @card_image = "diners.jpg"
+      when "Discover"
+        @card_image = "discover.jpg"
+      end
     end
   end
 
