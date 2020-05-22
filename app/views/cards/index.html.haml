@@ -1,3 +1,4 @@
+= render "items/header"
 .card-index
   .card-index__content
     %h2.card-index__content__top 支払い方法
@@ -15,3 +16,6 @@
         - unless @card.present?
           .new-card
             = link_to "クレジットカードを追加する", new_card_path, class:"new-card-btn",:style=>"color:white;"
+      = link_to "トップページに戻る", root_path, class:"new-card-btn"
+= render "items/footer"
+= render "items/sell_btn"

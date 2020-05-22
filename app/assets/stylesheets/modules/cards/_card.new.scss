@@ -10,6 +10,7 @@
     width: 700px;
     margin: auto;
     background-color: white;
+    margin-bottom: 50px;
     &__top{
       height: 100px;
       width: 100%;
@@ -26,7 +27,6 @@
         height: 40px;
         display: flex;
         justify-content: space-between;
-
         .card__image{
           height: 25px;
           width: 50px;
@@ -56,7 +56,7 @@
           @include select-btn ();
         }
         .input-cardcvc{
-          width: 50%;
+          width: 70%;
           margin-top: 7px;
           padding: 10px;
           border: solid 1px  rgb(205, 205, 205);

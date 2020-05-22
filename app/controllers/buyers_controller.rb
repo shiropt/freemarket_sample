@@ -7,6 +7,7 @@ class BuyersController < ApplicationController
     if @card.blank?
       #登録された情報がない場合にカード登録画面に移動
       redirect_to new_card_path
+      flash[:alert] = '商品の購入にはクレジットカードの登録が必要です'
     end
   end
 
@@ -47,7 +48,9 @@ class BuyersController < ApplicationController
   end
 
   def move_to_signed_in
-    redirect_to new_user_session_path unless user_signed_in?
-    flash[:alert] = '商品の購入にはログインが必要です'
+    unless user_signed_in?
+      redirect_to new_user_session_path
+      flash[:alert] = '商品の購入にはログインが必要です'
+    end
   end
 end

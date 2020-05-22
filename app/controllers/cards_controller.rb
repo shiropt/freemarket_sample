@@ -1,6 +1,7 @@
 class CardsController < ApplicationController
   require "payjp"
   before_action :set_card
+  before_action :set_parents, only: [:index, :new]
 
   def index
     # すでにクレジットカードが登録しているか？
@@ -84,5 +85,9 @@ class CardsController < ApplicationController
   private
   def set_card
     @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
+  end
+
+  def set_parents
+    @parents = Category.where(ancestry: nil)
   end
 end
