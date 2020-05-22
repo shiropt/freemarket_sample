@@ -16,13 +16,13 @@ class BuyersController < ApplicationController
     if @item.purchased_info_id.present? 
       redirect_back(fallback_location: root_path) 
     else
-      # 購入者もいないし、クレジットカードもあるし、決済処理に移行
+      # 決済処理に移行
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       # 請求を発行
       Payjp::Charge.create(
       amount: @item.price,
       customer: @card.customer_id,
-      currency: 'jpy'
+      currency: 'jpy'     # 日本円
       )
       # 購入したので、purchased_infoの情報をアップデートして売り切れにします。
       @purchased_info = PurchasedInfo.new
