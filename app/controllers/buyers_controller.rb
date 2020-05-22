@@ -13,10 +13,6 @@ class BuyersController < ApplicationController
     # すでに購入されていないか？
     if @item.purchased_info_id.present? 
       redirect_back(fallback_location: root_path) 
-    elsif @card.blank?
-      # カード情報がなければ、買えないから戻す
-      redirect_to action: "new"
-      flash[:alert] = '購入にはクレジットカード登録が必要です'
     else
       # 購入者もいないし、クレジットカードもあるし、決済処理に移行
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
@@ -24,23 +20,20 @@ class BuyersController < ApplicationController
       Payjp::Charge.create(
       amount: @item.price,
       customer: @card.customer_id,
-      currency: 'jpy',
+      currency: 'jpy'
       )
       # 購入したので、purchased_infoの情報をアップデートして売り切れにします。
       @purchased_info = PurchasedInfo.new
       @today = Date.today
       if @purchased_info.update(user_id: current_user.id, item_id: @item.id, purchase_date: @today, shipping_fee: @item.shipping_fee_side)
         @item.update(purchased_info_id: @purchased_info.id)
-        flash[:notice] = '購入しました。'
-        redirect_to done_item_buyers_path
+        flash[:buynotice] = '商品を購入しました。'
+        redirect_to root_path
       else
-        flash[:alert] = '購入に失敗しました。'
+        flash[:buyalert] = '商品の購入に失敗しました。'
         redirect_to controller: 'items', action: 'index'
       end
     end
-  end
-
-  def done
   end
 
   private
