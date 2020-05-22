@@ -34,10 +34,10 @@ RSpec.describe Item, type: :model do
       expect(item.errors[:description]).to include("を入力してください")
     end
 
-    it 'prefectures_idがない場合は登録できないこと' do
-      item = build(:item, prefectures_id: nil)
+    it 'prefecture_idがない場合は登録できないこと' do
+      item = build(:item, prefecture_id: nil)
       item.valid?
-      expect(item.errors[:prefectures_id]).to include("を入力してください")
+      expect(item.errors[:prefecture_id]).to include("を入力してください")
     end
 
     it 'condition_idがない場合は登録できないこと' do
@@ -46,10 +46,10 @@ RSpec.describe Item, type: :model do
       expect(item.errors[:condition_id]).to include("を入力してください")
     end
 
-    it 'shipping_days_idがない場合は登録できないこと' do
-      item = build(:item, shipping_days_id: nil)
+    it 'shipping_day_idがない場合は登録できないこと' do
+      item = build(:item, shipping_day_id: nil)
       item.valid?
-      expect(item.errors[:shipping_days_id]).to include("を入力してください")
+      expect(item.errors[:shipping_day_id]).to include("を入力してください")
     end
 
   end

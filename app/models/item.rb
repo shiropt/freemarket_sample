@@ -7,8 +7,8 @@ class Item < ApplicationRecord
             :price,
             :category_id,
             :condition_id,
-            :shipping_days_id,
-            :prefectures_id,
+            :shipping_day_id,
+            :prefecture_id,
             :user_id,
             presence: true
   validates :shipping_fee_side, inclusion: {in: [true, false]}

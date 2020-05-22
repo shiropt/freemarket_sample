@@ -59,8 +59,8 @@ class ItemsController < ApplicationController
                                   :brand,
                                   :condition_id, 
                                   :shipping_fee_side, 
-                                  :shipping_days_id, 
-                                  :prefectures_id,  
+                                  :shipping_day_id, 
+                                  :prefecture_id,  
                                   :user_id,
                                   images_attributes: [:image]
                                  ).merge(user_id: current_user.id)
