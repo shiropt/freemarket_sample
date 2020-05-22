@@ -27,7 +27,7 @@
               %td=@item.user.profile.nickname
             %tr
               %th カテゴリー
-              %td= link_to @item.category.name,category_path(@item.category.id)
+              %td= link_to @item.category.name,category_path(@item.category.id),class:"link"
             %tr
               %th ブランド
               %td=@item.brand
@@ -43,10 +43,10 @@
               %td= shipping_fee_side
             %tr
               %th 発送元地域
-              %td
+              %td=@item.prefecture.name
             %tr
               %th 発送日の目安
-              %td
+              %td=@item.shipping_day.name
       .bottom-content
         .favorites
           = icon('fa', 'star') 
@@ -61,7 +61,7 @@
       .seller-box__edit
         =link_to "商品の編集","#",class:"box-link"
       .seller-box__destroy
-        =link_to "商品の削除", "#",class:"box-link"
+        =link_to "商品の削除", item_path(@item),method: :delete, data: { confirm: '削除しますか？' },class:"box-link"
   -elsif user_signed_in? 
     .buyer-box
       .buyer-box__btn
