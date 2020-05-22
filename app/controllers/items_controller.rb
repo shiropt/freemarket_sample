@@ -53,6 +53,11 @@ class ItemsController < ApplicationController
     @parents = Category.where(ancestry: nil)
 
   end
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+
+  end
     
   private
 
