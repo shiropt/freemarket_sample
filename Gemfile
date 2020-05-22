@@ -83,4 +83,5 @@ gem 'rspec-rails'
 gem 'ancestry'
 gem 'haml-rails'
 gem 'active_hash'
-
+gem 'faker'
+gem 'gimei'

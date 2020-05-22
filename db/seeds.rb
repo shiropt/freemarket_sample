@@ -316,54 +316,60 @@ others_8.children.create([{name: "オフィス用品一般"},{name: "オフィ�
 others_9 = others.children.create(name: "その他")
 others_9.children.create([{name: "すべて"}])
 
+
+5.times do |n| 
+  gimei = Gimei.new
+
 User.create!(
-   email: 'testt@test.com',
+   email: Faker::Internet.email,
    password: 'sssss00000',
    password_confirmation: 'sssss00000',
-   last_name: '流川',
-   first_name: '楓',
-   last_name_kana: 'るかわ',
-   first_name_kana: 'かえで',
+   last_name: gimei.last.kanji,
+   first_name: gimei.first.kanji,
+   last_name_kana: gimei.last.hiragana,
+   first_name_kana: gimei.first.hiragana,
    gender: 1,
    birth_day: 19770201
    )
+   
    Profile.create!(
-     nickname: 'キツネ',
-     profile: 'よろしく',
-     image: File.open('./app/assets/images/'),
-     user_id: 1
+     nickname: Faker::JapaneseMedia::OnePiece.character,
+     profile: Faker::Lorem.paragraphs,
+     image: File.open('./app/assets/images/a003.png'),
+     user_id: User.find(n+1).id
      )
      Address.create!(
        post_code: 1234567,
        prefecture_id: 1,
-       city: '富が丘',
-       block: '富が丘',
-       building: 'めぞん一刻',
+       city: Gimei.city.kanji ,
+       block: Gimei.town.kanji,
+       building: Gimei.town.to_s,
        telephone_number: 99099999999,
-       user_id:1
+       user_id: User.find(n+1).id
        )
-    # Image.create!(
-    #   image: File.open('./app/assets/images/'),
-    #   item_id: 1
-    #   )
-    # Item.create!(
-    # name: "iphone12",
-    # description: "iPhone 11 Pro ミッドナイトグリーン 64 GB SIMフリー
-    # iPhoneSE買い増しにつき、お分けします。
-    # ケース使用でほぼ新品同様ですが、写真のように下部に擦り傷があります。
-    # 機種名: iPhone 11 Pro
-    # カラー: ミッドナイトグリーン
-    # 容量: 64 GB
-    # 購入したキャリア: SIMフリー
-    # 付属品: 充電ケーブル, ACアダプター, 説明書, 箱, イヤホン",
-    # price: 50000,
-    # size_id: 1,
-    # category_id: 930,
-    # brand: 'Apple',
-    # condition_id: 1,
-    # shipping_fee_side: 1,
-    # shipping_days_id: 1,
-    # prefectures_id: 3,
-    # user_id:1
-    # )
+      end
+# Item.create!(
+#   name: "iphone12",
+#   description: "iPhone 11 Pro ミッドナイトグリーン 64 GB SIMフリー
+#   iPhoneSE買い増しにつき、お分けします。
+#     ケース使用でほぼ新品同様ですが、写真のように下部に擦り傷があります。
+#     機種名: iPhone 11 Pro
+#     カラー: ミッドナイトグリーン
+#     容量: 64 GB
+#     購入したキャリア: SIMフリー
+#     付属品: 充電ケーブル, ACアダプター, 説明書, 箱, イヤホン",
+#     price: 50000,
+#     size_id: 1,
+#     category_id: 930,
+#     brand: 'Apple',
+#     condition_id: 1,
+#     shipping_fee_side: 1,
+#     shipping_days_id: 1,
+#     prefectures_id: 3,
+#     user_id:1
+#     )
     
+#     Image.create!(
+#       image: File.open('./app/assets/images/a003.png'),
+#       item_id: 1
+#       )
