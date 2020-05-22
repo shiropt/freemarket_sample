@@ -335,7 +335,7 @@ User.create!(
    Profile.create!(
      nickname: Faker::JapaneseMedia::OnePiece.character,
      profile: Faker::Lorem.paragraphs,
-     image: File.open('./app/assets/images/a003.png'),
+    #  image: File.open('./app/assets/images/a003.png'),
      user_id: User.find(n+1).id
      )
      Address.create!(
