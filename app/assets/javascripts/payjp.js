@@ -2,9 +2,9 @@
 $(document).on('turbolinks:load',function(){
   // pay.jpと通信する為、公開鍵をセット
   Payjp.setPublicKey('pk_test_fa06ca128d1486d7d29ad0c4');
-  let form = $(".card-form");
   // submitボタンをクリックで発火
    $("#charge-form").click(function() {
+    let form = $(".card-form");
      // フォームの処理を一旦停止
     form.find("input[type=submit]").prop("disabled", true);
     // pay.jpへ送るカードデータをcardへ代入
