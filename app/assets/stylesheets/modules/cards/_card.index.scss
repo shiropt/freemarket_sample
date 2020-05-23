@@ -17,6 +17,7 @@
     }
     &__main{
       padding: 40px 150px;
+      margin-bottom: 50px;
       &--number{
         margin-top: 20px;
       }
@@ -38,9 +39,6 @@
           width: 100%;
           height: 100%;
         }
-      }
-      &--limit{
-
       }
       .new-card{
         position: relative;

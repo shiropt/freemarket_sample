@@ -61,7 +61,8 @@ class CardsController < ApplicationController
       # テーブルに保存
       @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id)
       if @card.save
-        redirect_to action: "index", notice:"支払い情報の登録が完了しました"
+        redirect_to action: "index"
+        flash[:success] = '支払い情報の登録が完了しました'
       else
         render 'new'
       end
@@ -76,9 +77,11 @@ class CardsController < ApplicationController
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete # pay.jpの顧客情報を削除
     if @card.destroy # furima上でもクレジットカードを削除
-      redirect_to action: "index", notice: "削除しました"
+      redirect_to action: "index"
+      flash[:success] = "削除しました"
     else
-      redirect_to action: "index", alert: "削除できませんでした"
+      redirect_to action: "index"
+      flash[:alert] = "削除できませんでした"
     end
   end
 
