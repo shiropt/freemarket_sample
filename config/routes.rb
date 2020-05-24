@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     end
     resources :buyers, only:[:index] do
       collection do
-        get 'done', to: 'buyers#done'
         post 'buy', to: 'buyers#buy'
       end
     end
