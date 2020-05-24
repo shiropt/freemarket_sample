@@ -1,0 +1,10 @@
+= render "header"
+.main__pickup 
+  %h2.head 検索結果
+  .items
+    .items__head
+      .items__lists
+        - @items.each do |item|
+          = render partial: "items/item", locals: { item: item }
+= render "footer"
+= render "sell_btn"

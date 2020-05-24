@@ -4,10 +4,11 @@
       %h1.main-logo
         = link_to image_tag("/material/logo/logo.png", class:"logo"),root_path
       .search-box
-        = form_with(url: "#", local: true) do |f|
-          = f.text_field :content, class: "search-input", placeholder: "キーワードから探す"
-        %button{type: "submit", class: "search-icon"}
-          = image_tag("/material/icon/icon-search 1.png", class:"icon")
+        = form_with(url: search_items_path, local: true, method: :get) do |f|
+          = f.text_field :keyword, class: "search-input", placeholder: "キーワードから探す"
+          .search-btn
+            = f.submit "", class: "search-icon"
+            %i.fas.fa-search
           %ul.resultLists
     .header__inner__nav
       %ul.lists-left

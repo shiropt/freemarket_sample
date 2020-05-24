@@ -51,8 +51,9 @@ class ItemsController < ApplicationController
 
   def show
     @parents = Category.where(ancestry: nil)
-
+    @item = Item.find(params[:id]).order("created_at DESC")
   end
+  
   def destroy
     if @item.user_id == current_user.id && @item.destroy
       flash[:success] = "「#{@item.name}」を削除しました"
@@ -61,6 +62,11 @@ class ItemsController < ApplicationController
       render action: :show,
       alert: "「#{@item.name}」を削除出来ませんでした"
     end
+  end
+
+  def search
+    @parents = Category.where(ancestry: nil)
+    @items = Item.search(params[:keyword])
   end
     
   private
@@ -80,7 +86,6 @@ class ItemsController < ApplicationController
                                   images_attributes: [:image]
                                  ).merge(user_id: current_user.id)
   end
-
 
   def set_item
     @item = Item.find(params[:id])
