@@ -5,7 +5,7 @@
     .item__content
       .item__image
         .item__image__top
-          = image_tag @item.images.first.image.url ,size: '360x230'
+          = image_tag @item.images.first.image.url ,size: '240x130'
         .item__image__bottom__wrapper
           - @item.images.each do|image|
             .image-list
@@ -33,7 +33,8 @@
               %td=@item.brand
             %tr
               %th 商品のサイズ
-              %td=@item.size.name
+              -# items_helperで定義したif文を呼び出し
+              %td= size
             %tr
               %th 商品の状態
               %td=@item.condition.name
@@ -65,7 +66,7 @@
   -elsif user_signed_in? 
     .buyer-box
       .buyer-box__btn
-        =link_to "購入画面へ進む",buyer_path(@item),class:"box-link"
+        =link_to "購入画面へ進む","#",class:"box-link"
    
 
   .comment
