@@ -16,7 +16,8 @@
       letter-spacing: 0.1em;
     }
     &__main{
-      padding: 40px 150px;
+      height: 200px;
+      padding: 40px 150px 10px 150px;
       margin-bottom: 50px;
       &--number{
         margin-top: 20px;
@@ -44,7 +45,7 @@
         position: relative;
         text-align: center;
         height: 30px;
-        width: 100%;
+        width: 380px;
         font-size: 20px;
         color: white;
         margin-top: 20px;
@@ -52,13 +53,20 @@
         letter-spacing: 0.3em;
         background-color: $main-color;
         .new-card-btn{
-          
           display: block;
           position: absolute;
-          
+          height: 50px;
+          line-height: 50px;
+          top: 0;
           left: 0;
           width: 100%;
-          height: 100%;
+        }
+      }
+      &--return{
+        float: right;
+        padding-top: 50px;
+        .card-return-btn{
+          color: black;
         }
       }
     }
