@@ -1,0 +1,21 @@
+= render "items/header"
+.card-index
+  .card-index__content
+    %h2.card-index__content__top 支払い方法
+    .card-index__content__main
+      クレジットカード一覧
+      - if @card.present?
+        .card-index__content__main--number
+          = image_tag "/material/card/#{@card_image}",width:'50',height:'25'
+          %p= "**** **** **** " + @card_info.last4 #クレジットカードの下４桁を表示
+        .card-index__content__main--delete
+          = link_to "削除する", card_path(@card), method: :delete, class:"creditcard-info__delete", :style=>"color:red;"
+        .card-index__content__main__limit 
+          %p= @exp_month + " / " + @exp_year
+      - else
+        - unless @card.present?
+          .new-card
+            = link_to "クレジットカードを追加する", new_card_path, class:"new-card-btn",:style=>"color:white;"
+      = link_to "トップページに戻る", root_path, class:"new-card-btn"
+= render "items/footer"
+= render "items/sell_btn"
