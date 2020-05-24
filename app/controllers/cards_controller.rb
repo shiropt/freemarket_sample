@@ -8,7 +8,7 @@ class CardsController < ApplicationController
     if @card.present?
       # pay.jpからカード情報を取得する
       # pay.jpの秘密鍵をセットする。
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
       # pay.jpから顧客情報を取得する。
       customer = Payjp::Customer.retrieve(@card.customer_id)
       # pay.jpの顧客情報から、デフォルトで使うクレジットカードを取得する。
@@ -46,7 +46,7 @@ class CardsController < ApplicationController
 
   def create
     # pay.jpと通信するので秘密鍵をセット
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
     # JSでトークンは正しく作られているか？
     if params['payjpToken'].blank?
       render "new"
@@ -72,7 +72,7 @@ class CardsController < ApplicationController
     # card情報とpay.jp側の情報を削除
   def destroy     
     # 秘密鍵をセットして、PAY.JPから情報をする。
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
     # pay.jpの顧客情報を取得
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete # pay.jpの顧客情報を削除

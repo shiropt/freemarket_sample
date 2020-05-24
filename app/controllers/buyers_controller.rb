@@ -17,7 +17,7 @@ class BuyersController < ApplicationController
       redirect_back(fallback_location: root_path) 
     else
       # 決済処理に移行
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
       # 請求を発行
       Payjp::Charge.create(
       amount: @item.price,
