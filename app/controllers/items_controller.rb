@@ -3,14 +3,14 @@ class ItemsController < ApplicationController
 
   def index
     @parents = Category.where(ancestry: nil)
-    @ladies = Item.where(category_id: 1..250).includes(:images, :purchased_info).order("created_at DESC").limit(5)
-    @mens = Item.where(category_id: 251..381).includes(:images, :purchased_info).order("created_at DESC").limit(5)
-    @electrical_appliances = Item.where(category_id: 929..1000).includes(:images, :purchased_info).order("created_at DESC").limit(5)
-    @toys = Item.where(category_id: 716..828).includes(:images, :purchased_info).order("created_at DESC").limit(5)
-    @chanel = Item.where(brand: "シャネル").includes(:images, :purchased_info).order("created_at DESC").limit(5)
-    @vuitton = Item.where(brand: "ヴィトン").includes(:images, :purchased_info).order("created_at DESC").limit(5)
-    @supreme = Item.where(brand: "シュプリーム").includes(:images, :purchased_info).order("created_at DESC").limit(5)
-    @nike = Item.where(brand: "ナイキ").includes(:images, :purchased_info).order("created_at DESC").limit(5)    
+    @ladies = Item.where(purchased_info_id: nil).where(category_id: 1..250).includes(:images, :purchased_info).order("created_at DESC").limit(5)
+    @mens = Item.where(purchased_info_id: nil).where(category_id: 251..381).includes(:images, :purchased_info).order("created_at DESC").limit(5)
+    @electrical_appliances = Item.where(purchased_info_id: nil).where(category_id: 929..1000).includes(:images, :purchased_info).order("created_at DESC").limit(5)
+    @toys = Item.where(purchased_info_id: nil).where(category_id: 716..828).includes(:images, :purchased_info).order("created_at DESC").limit(5)
+    @chanel = Item.where(purchased_info_id: nil).where(brand: "シャネル").includes(:images, :purchased_info).order("created_at DESC").limit(5)
+    @vuitton = Item.where(purchased_info_id: nil).where(brand: "ヴィトン").includes(:images, :purchased_info).order("created_at DESC").limit(5)
+    @supreme = Item.where(purchased_info_id: nil).where(brand: "シュプリーム").includes(:images, :purchased_info).order("created_at DESC").limit(5)
+    @nike = Item.where(purchased_info_id: nil).where(brand: "ナイキ").includes(:images, :purchased_info).order("created_at DESC").limit(5)    
   end
 
   # 商品出品ページ
