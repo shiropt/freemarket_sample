@@ -33,7 +33,7 @@
               %td=@item.brand
             %tr
               %th 商品のサイズ
-              %td=@item.size.name
+              -# %td=@item.size.name
             %tr
               %th 商品の状態
               %td=@item.condition.name
@@ -59,7 +59,7 @@
   -if user_signed_in? && current_user.id == @item.user_id
     .seller-box
       .seller-box__edit
-        =link_to "商品の編集","#",class:"box-link"
+        =link_to "商品の編集", edit_item_path(@item),class:"box-link"
       .seller-box__destroy
         =link_to "商品の削除", "#",class:"box-link"
   -elsif user_signed_in? 
