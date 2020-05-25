@@ -175,20 +175,56 @@
   }
   .comment{
   width: 700px;
-  margin: 0 auto;
+  margin: 30px auto 0;
   background-color: white;
-  height: 350px;
+  height: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  &__list{
+    margin: 0 auto;
+    text-align: center;
+    
+    &__wrapper{
+      margin-bottom:10px;
+      display: flex;
+      min-height: 40px;
+      .user__name{
+        font-size: 20px;
+        width: 120px;
+        
+      }
+      .comment__content{
+        word-wrap: break-word;
+      position: relative;
+      padding: 15px;
+      width: 500px;
+      background-color: #eee;
+      border-radius: 10px;
+      text-align-last: left;
+      
+
+    }
+    .comment__content::before{
+      content: '';
+      position: absolute;
+      display: block;
+      left: -15px;
+      top: 10px;
+      border-right: 15px solid #eee;
+      border-bottom: 15px solid transparent;
+    }
+
+    
+
+    }
+  }
+
 
   &__form{
-    width: 80%;
-    margin: 30px auto 0;
+    margin:30px 0 10px 50px;
 
-    textarea{
-      margin-top: 30px;
-      height: 100px;
-      width: 100%;
-      padding: 10px;
-    }
+  
   }
 
   &__attention{
@@ -200,10 +236,9 @@
     line-height: 2px;
     background: #eee;
   } 
-  button{
+  .comment-button{
       margin:0 auto ;
       background-color:#3CCACE ;
-      margin-top: 40px;
       width:390px;
       font-size:24px ;
       height: 53px;
