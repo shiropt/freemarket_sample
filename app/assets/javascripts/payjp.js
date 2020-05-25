@@ -20,7 +20,7 @@ $(document).on('turbolinks:load',function(){
       if (response.error){
         form.find('.payment-errors').text(response.error.message);
         //submitボタンの有効化
-        form.find('button').prop('disabled', false);
+        form.find("input[type=submit]").prop('disabled', false);
       }
       // エラーのない場合はフォームで入力されたデータを削除(セキュリティ上アプリ側にデータを残したくないため)
       else {
