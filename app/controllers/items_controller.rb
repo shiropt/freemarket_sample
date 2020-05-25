@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:update, :edit, :show,:destroy]
-  before_action :set_category, only: [:new, :update, :edit]
+  before_action :set_category, only: [:new, :update, :edit, :show]
 
   def index
     @parents = Category.where(ancestry: nil)
@@ -49,14 +49,10 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @parents = Category.where(ancestry: nil)
   end
 
   def set_category
-    @category_parent_array = []
-      Category.where(ancestry: nil).each do |parent|
-        @category_parent_array << parent
-      end
+    @parents = Category.where(ancestry: nil)
   end
 
   def get_category_children
