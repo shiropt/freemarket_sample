@@ -346,12 +346,15 @@ others_9.children.create([{name: "すべて"}])
 #        telephone_number: 99099999999,
 #        user_id: User.find(n+1).id
 #        )
-  # end
-  
+#   end
+
+  5.times do |n| 
   Image.create!(
     image: File.open('./app/assets/images/profile.png'),
-    item_id: 1
+    item_id: Item.find(n+1).id
     ) 
+  end
+
   # Item.create!(
   #   name: "iphone12",
   #     description: "iPhone 11 Pro ミッドナイトグリーン 64 GB SIMフリー
