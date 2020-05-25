@@ -1,3 +1,4 @@
+= render "items/header"
 .item
   .item__wrapper
     .item__title
@@ -89,3 +90,4 @@
    
   .more-pages
     #{link_to @item.category.name,category_path(@item.category.id), class:"link"}をもっと見る
+= render "items/footer"
