@@ -65,7 +65,7 @@
             =link_to "支払い方法", cards_path
             = icon('fas', 'chevron-right', class:'chevron')
       %li
-        = link_to destroy_user_session_path do
+        = link_to destroy_user_session_path, method: :delete do
           %p.table-item
             ログアウト
             = icon('fas', 'chevron-right', class:'chevron')
