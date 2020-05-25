@@ -5,7 +5,7 @@
     .item__content
       .item__image
         .item__image__top
-          = image_tag @item.images.first.image.url ,size: '360x230'
+          = image_tag @item.images.first.image.url ,size: '260x130'
         .item__image__bottom__wrapper
           - @item.images.each do|image|
             .image-list
@@ -47,6 +47,7 @@
             %tr
               %th 発送日の目安
               %td=@item.shipping_day.name
+    -if current_user
       .bottom-content
         .favorites
           = icon('fa', 'star') 
@@ -66,18 +67,29 @@
     .buyer-box
       .buyer-box__btn
         =link_to "購入画面へ進む",buyer_path(@item),class:"box-link"
-   
-
   .comment
-    .comment__form
-      %textarea 
-    .comment__attention
-      %p 相手のことを考え丁寧なコメントを心がけましょう。
-      %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
+  
+    .comment__list
+      - @comments.each do |comment|
+        .comment__list__wrapper
+          .user__name
+            = comment.user.profile.nickname
+          .comment__content
+            = comment.comment
+            
 
-      %button{type: "button"}
-        %i.fas.fa-comment
-          コメントする
+    = form_with model: [@item, @comment], local: true, id: "new_comment" do |f|
+      = f.text_area :comment,class:"comment__form",size:"65x5", rows: "3",placeholder: 'コメントを入力してください'
+      = f.submit "コメントする",class:"comment-button"
+      
+
+      .comment__attention
+        %p 相手のことを考え丁寧なコメントを心がけましょう。
+        %br 不快な言葉遣いなどは利用制限や退会処分となることがあります。
+         
+
+      
+        
   .other-pages
     .other-pages__previous  
       = link_to '#',class:"link" do
