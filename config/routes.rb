@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     controllers: { registrations: 'users/registrations',
     sessions: 'users/sessions' }
   resources :items, except: [:edit, :update] do
+    resources :comments, only: [:create]
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
