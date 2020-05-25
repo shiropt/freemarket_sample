@@ -51,6 +51,9 @@ class ItemsController < ApplicationController
 
   def show
     @parents = Category.where(ancestry: nil)
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
+    
 
   end
   def destroy
