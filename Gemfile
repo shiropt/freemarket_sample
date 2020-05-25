@@ -84,4 +84,6 @@ gem 'rspec-rails'
 gem 'ancestry'
 gem 'haml-rails'
 gem 'active_hash'
-
+gem 'payjp'
+gem 'dotenv-rails'
+gem 'gimei'

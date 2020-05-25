@@ -315,3 +315,60 @@ others_8 = others.children.create(name: "事務/店舗用品")
 others_8.children.create([{name: "オフィス用品一般"},{name: "オフィス家具"},{name: "店舗用品"},{name: "OA機器"},{name: "ラッピング/包装"},{name: "その他"}])
 others_9 = others.children.create(name: "その他")
 others_9.children.create([{name: "すべて"}])
+
+# 5.times do |n| 
+#   gimei = Gimei.new
+
+# User.create!(
+#    email: Faker::Internet.email,
+#    password: '747474g',
+#    password_confirmation: '747474g',
+#    last_name: gimei.last.kanji,
+#    first_name: gimei.first.kanji,
+#    last_name_kana: gimei.last.hiragana,
+#    first_name_kana: gimei.first.hiragana,
+#    gender: 1,
+#    birth_day: 19770201
+#    )
+
+#    Profile.create!(
+#      nickname: Faker::JapaneseMedia::OnePiece.character,
+#      profile: Faker::Lorem.paragraphs,
+#      image: File.open('./app/assets/images/profile.png'),
+#      user_id: User.find(n+1).id
+#      )
+#      Address.create!(
+#        post_code: 1234567,
+#        prefecture_id: 1,
+#        city: Gimei.city.kanji ,
+#        block: Gimei.town.kanji,
+#        building: Gimei.town.to_s,
+#        telephone_number: 99099999999,
+#        user_id: User.find(n+1).id
+#        )
+  # end
+  
+  Image.create!(
+    image: File.open('./app/assets/images/profile.png'),
+    item_id: 1
+    ) 
+  # Item.create!(
+  #   name: "iphone12",
+  #     description: "iPhone 11 Pro ミッドナイトグリーン 64 GB SIMフリー
+  #     iPhoneSE買い増しにつき、お分けします。
+  #     ケース使用でほぼ新品同様ですが、写真のように下部に擦り傷があります。
+  #     機種名: iPhone 11 Pro
+  #     カラー: ミッドナイトグリーン
+  #     容量: 64 GB
+  #     購入したキャリア: SIMフリー
+  #     付属品: 充電ケーブル, ACアダプター, 説明書, 箱, イヤホン",
+  #     price: 50000,
+  #     size_id: 1,
+  #     category_id: 930,
+  #     brand: 'Apple',
+  #     condition_id: 1,
+  #     shipping_fee_side: 1,
+  #     shipping_day_id: 1,
+  #     prefecture_id: 3,
+  #     user_id:1
+  #     )

@@ -1,17 +1,17 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:update, :edit]
+  before_action :set_item, only: [:update, :edit, :show,:destroy]
   before_action :set_category, only: [:new, :update, :edit]
 
   def index
     @parents = Category.where(ancestry: nil)
-    @ladies = Item.where(category_id: 1..250).includes(:images, :purchased_info).order("created_at DESC").limit(5)
-    @mens = Item.where(category_id: 251..381).includes(:images, :purchased_info).order("created_at DESC").limit(5)
-    @electrical_appliances = Item.where(category_id: 929..1000).includes(:images, :purchased_info).order("created_at DESC").limit(5)
-    @toys = Item.where(category_id: 716..828).includes(:images, :purchased_info).order("created_at DESC").limit(5)
-    @chanel = Item.where(brand: "シャネル").includes(:images, :purchased_info).order("created_at DESC").limit(5)
-    @vuitton = Item.where(brand: "ヴィトン").includes(:images, :purchased_info).order("created_at DESC").limit(5)
-    @supreme = Item.where(brand: "シュプリーム").includes(:images, :purchased_info).order("created_at DESC").limit(5)
-    @nike = Item.where(brand: "ナイキ").includes(:images, :purchased_info).order("created_at DESC").limit(5)    
+    @ladies = Item.where(purchased_info_id: nil).where(category_id: 1..250).includes(:images, :purchased_info).order("created_at DESC").limit(5)
+    @mens = Item.where(purchased_info_id: nil).where(category_id: 251..381).includes(:images, :purchased_info).order("created_at DESC").limit(5)
+    @electrical_appliances = Item.where(purchased_info_id: nil).where(category_id: 929..1000).includes(:images, :purchased_info).order("created_at DESC").limit(5)
+    @toys = Item.where(purchased_info_id: nil).where(category_id: 716..828).includes(:images, :purchased_info).order("created_at DESC").limit(5)
+    @chanel = Item.where(purchased_info_id: nil).where(brand: "シャネル").includes(:images, :purchased_info).order("created_at DESC").limit(5)
+    @vuitton = Item.where(purchased_info_id: nil).where(brand: "ヴィトン").includes(:images, :purchased_info).order("created_at DESC").limit(5)
+    @supreme = Item.where(purchased_info_id: nil).where(brand: "シュプリーム").includes(:images, :purchased_info).order("created_at DESC").limit(5)
+    @nike = Item.where(purchased_info_id: nil).where(brand: "ナイキ").includes(:images, :purchased_info).order("created_at DESC").limit(5)    
   end
 
   # 商品出品ページ
@@ -49,7 +49,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @parents = Category.where(ancestry: nil)
   end
 
@@ -66,6 +65,15 @@ class ItemsController < ApplicationController
 
   def get_category_grandchildren
     @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+  def destroy
+    if @item.user_id == current_user.id && @item.destroy
+      flash[:success] = "「#{@item.name}」を削除しました"
+      redirect_to root_path
+    else
+      render action: :show,
+      alert: "「#{@item.name}」を削除出来ませんでした"
+    end
   end
     
   private

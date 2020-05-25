@@ -5,7 +5,7 @@
     .item__content
       .item__image
         .item__image__top
-          = image_tag @item.images.first.image.url ,size: '360x230'
+          = image_tag @item.images.first.image.url ,size: '240x130'
         .item__image__bottom__wrapper
           - @item.images.each do|image|
             .image-list
@@ -27,13 +27,14 @@
               %td=@item.user.profile.nickname
             %tr
               %th カテゴリー
-              %td= link_to @item.category.name,category_path(@item.category.id)
+              %td= link_to @item.category.name,category_path(@item.category.id),class:"link"
             %tr
               %th ブランド
               %td=@item.brand
             %tr
               %th 商品のサイズ
-              -# %td=@item.size.name
+              -# items_helperで定義したif文を呼び出し
+              %td= size
             %tr
               %th 商品の状態
               %td=@item.condition.name
@@ -43,10 +44,10 @@
               %td= shipping_fee_side
             %tr
               %th 発送元地域
-              %td
+              %td=@item.prefecture.name
             %tr
               %th 発送日の目安
-              %td
+              %td=@item.shipping_day.name
       .bottom-content
         .favorites
           = icon('fa', 'star') 
@@ -61,11 +62,11 @@
       .seller-box__edit
         =link_to "商品の編集", edit_item_path(@item),class:"box-link"
       .seller-box__destroy
-        =link_to "商品の削除", "#",class:"box-link"
+        =link_to "商品の削除", item_path(@item),method: :delete, data: { confirm: '削除しますか？' },class:"box-link"
   -elsif user_signed_in? 
     .buyer-box
       .buyer-box__btn
-        =link_to "購入画面へ進む",buyer_path(@item),class:"box-link"
+        =link_to "購入画面へ進む",item_buyers_path(@item),class:"box-link"
    
 
   .comment
