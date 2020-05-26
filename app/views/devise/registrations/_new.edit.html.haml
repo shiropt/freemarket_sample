@@ -24,7 +24,7 @@
     %p.field-error= resource.errors.full_messages_for(:first_name_kana).first
 .field
   %label.field--title 性別
-  %span.field--span 必須
+  %span.field--span--optional 任意
   %br/
   = f.radio_button :gender, 1, class: "radio_btn"
   = f.label "男 性", for: "user_gender_1"
