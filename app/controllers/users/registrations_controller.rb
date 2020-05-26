@@ -25,7 +25,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     super
-    redirect_to root_path
   end
 
   # DELETE /resource

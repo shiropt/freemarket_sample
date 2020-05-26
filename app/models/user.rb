@@ -25,7 +25,7 @@ class User < ApplicationRecord
   validates :password, :password_confirmation,       allow_blank: true, format: { with: VALID_PASSWORD_REGEX }
   validates :last_name, :first_name,                 presence: true, format: { with: VALID_NAME_REGEX }
   validates :last_name_kana, :first_name_kana,       presence: true, format: { with: VALID_NAME_KANA_REGEX }
-  validates :gender, :birth_day,                     presence: true
+  validates :birth_day,                              presence: true
 
 
 end

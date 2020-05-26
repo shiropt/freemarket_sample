@@ -60,9 +60,9 @@
             本人情報変更
             = icon('fas', 'chevron-right', class:'chevron')
       %li
-        = link_to "#" do
+        = link_to cards_path do
           %p.table-item
-            =link_to "支払い方法", cards_path
+            支払い方法
             = icon('fas', 'chevron-right', class:'chevron')
       %li
         = link_to destroy_user_session_path, method: :delete do
