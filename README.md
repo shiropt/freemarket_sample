@@ -9,7 +9,7 @@
 |last_name_kana    |string  |null: false                      |
 |first_name_kana   |string  |null: false                      |
 |email             |string  |null: false, unique: true        |
-|gender            |integer |null: false                      |
+|gender            |integer |                                 |
 |birth_day         |date    |null: false                      |
 |encypted_password |string  |null: false                      |
 
@@ -32,7 +32,7 @@
 |block           |string  |null: false                        |
 |building        |string  |                                   |
 |telephone_number|string  |                                   |
-|user_id         |integer |null: false, foreign_key: true     |# referenceに変更
+|user_id         |integer |null: false, foreign_key: true     |
 
 ### Association
 - belongs_to :user
@@ -43,7 +43,7 @@
 ## profilesテーブル
 |Column        |Type     |Options                            |
 |--------------|---------|-----------------------------------|
-|user_id       |integer  |null: false, foreign_key: true     |# referenceに変更
+|user_id       |integer  |null: false, foreign_key: true     |
 |nickname      |string   |null: false                        |
 |image         |string   |                                   |
 |profile       |text     |                                   |
@@ -56,9 +56,8 @@
 ### credit_cardsテーブル
 |Column       |Type  |Options                       |
 |-------------|------|------------------------------|
-|user_id      |intger|null: false, foreign_key: true|# referenceに変更
+|user_id      |intger|null: false, foreign_key: true|
 |customer_id  |string|null: false                   |
-|card_id      |string|null: false                   |
 
 ### Association
 - belongs_to :user
@@ -68,8 +67,8 @@
 ### commentsテーブル
 |Column|Type|Options|
 |-------|------|------------------------------|
-|user_id|intger|null: false, foreign_key: true|# referenceに変更
-|item_id|intger|null: false, foreign_key: true|# referenceに変更 # foreign_key追加
+|user_id|intger|null: false, foreign_key: true|
+|item_id|intger|null: false, foreign_key: true|
 |comment|text  |null: false                   |
 
 ### Association
@@ -82,7 +81,7 @@
 |Column |Type   |Options                        |
 |-------|-------|-------------------------------|
 |image  |string |null: false                    |
-|item_id|integer|null: false, foreign_key: true |# reference ok
+|item_id|integer|null: false, foreign_key: true |
 
 ### Association
 - belongs_to :item
@@ -104,10 +103,10 @@
 ### purchased_infosテーブル
 |Column       |Type      |Options                       |
 |-------------|----------|------------------------------|
-|user_id      |integer   |null: false, foreign_key: true|# reference ok
-|item_id      |integer   |null: false, foreign_key: true|# reference ok
+|user_id      |integer   |null: false, foreign_key: true|
+|item_id      |integer   |null: false, foreign_key: true|
 |purchase_date|date      |null: false                   |
-|shipping_fee |integer   |null: false                   |#追記
+|shipping_fee |integer   |null: false                   |
 
 ### Association
 - belongs_to :item
@@ -121,23 +120,23 @@
 |name             |string   |null: false                   |
 |description      |text     |null: false                   |
 |price            |integer  |null: false                   |
-|size_id          |integer  |                              |@
+|size_id          |integer  |                              |
 |category_id      |integer  |null: false                   |
-|brand            |string   |                              |#変更
-|condition_id     |integer  |null: false                   |#変更 @
+|brand            |string   |                              |
+|condition_id     |integer  |null: false                   |
 |shipping_fee_side|boolean  |null: false                   |
-|prefectures_id   |integer  |null: false                   |@
-|shipping_days_id |integer  |                              |@
-|user_id          |integer  |null: false                   |# reference追加
-|purchased_info_id|integer  |             foreign_key: true|#追記、# reference 追加
+|prefectures_id   |integer  |null: false                   |
+|shipping_days_id |integer  |                              |
+|user_id          |integer  |null: false                   |
+|purchased_info_id|integer  |             foreign_key: true|
 
 ### Association  
-- belongs_to :user                       # belongs_to :brand消去
+- belongs_to :user
 - belongs_to :category
-- has_one :purchased_info             # has_oneに変更
+- has_one :purchased_info
 - belongs_to_active_hash :prefecture
 - belongs_to_active_hash :size
-- belongs_to_active_hash :condition    #追記
+- belongs_to_active_hash :condition
 - belongs_to_active_hash :shipping_day
 - has_many :images
 - has_many :comments
