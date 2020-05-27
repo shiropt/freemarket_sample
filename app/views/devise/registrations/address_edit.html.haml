@@ -1,0 +1,9 @@
+.new-registration
+  .new-registration__header
+  .new-registration__main
+    %h2.new-registration__main__top 会員情報変更
+    = form_with model: @user, url: user_registration_path,  class: 'user__form',local: true do |f|
+      = render "devise/shared/error_messages", resource: resource
+      = render "new.edit.address",  f: f
+      .actions
+        = f.submit "変更を登録", class: "submit"

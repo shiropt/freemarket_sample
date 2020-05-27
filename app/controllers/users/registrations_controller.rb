@@ -27,6 +27,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def address_edit
+    @user = User.find_by(params[:id])
+    @user.address = Address.find_by(params[:id])
+  end
+
+  def address_update
+    current_user.assign_attributes(configure_permitted_parameters)
+    if current_user.save
+	  redirect_to user_path(@user), notice: 'プロフィールを更新しました'
+    else
+      render "address_edit"
+    end
+  end
+
   # DELETE /resource
   # def destroy
   #   super
