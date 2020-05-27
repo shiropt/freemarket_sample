@@ -60,6 +60,12 @@
             本人情報変更
             = icon('fas', 'chevron-right', class:'chevron')
       %li
+        = link_to "/users/#{current_user.id}/address_edit" do
+
+          %p.table-item
+            送付先住所変更
+            = icon('fas', 'chevron-right', class:'chevron')
+      %li
         = link_to cards_path do
           %p.table-item
             支払い方法
