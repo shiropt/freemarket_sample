@@ -4,8 +4,8 @@ Rails.application.routes.draw do
     controllers: { registrations: 'users/registrations',
     sessions: 'users/sessions' }
   devise_scope :user do
-    get 'address_edit' => 'users/registrations#address_edit'
-    get 'address_update' => 'users/registrations#address_update'
+    get 'users/:id/address_edit' => 'users/registrations#address_edit'
+    patch 'users/:id/address_update' => 'users/registrations#address_update'
   end
   resources :items do
     collection do

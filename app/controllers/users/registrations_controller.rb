@@ -28,13 +28,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def address_edit
-    @user = User.find_by(params[:id])
-    @user.address = Address.find_by(params[:id])
+    @user = User.find(params[:id])
   end
 
   def address_update
-    current_user.assign_attributes(configure_permitted_parameters)
-    if current_user.save
+    @user = User.find(params[:id])
+    if @user.update(configure_account_update_params)
 	  redirect_to user_path(@user), notice: 'プロフィールを更新しました'
     else
       render "address_edit"
@@ -66,7 +65,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [
+    params.require(:user).permit(:sign_up, keys: [
       :last_name,
       :first_name,
       :last_name_kana,
@@ -87,7 +86,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [
+
+    params.require(:user).permit(
       :last_name,
       :first_name,
       :last_name_kana,
@@ -101,9 +101,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
                            :address_first_name_kana,
                            :post_code,
                            :prefecture_id,
-                           :city, :block,
+                           :city,
+                           :block,
                            :building,
-                           :telephone_number]])
+                           :telephone_number])
   end
 
   # The path used after sign up.
