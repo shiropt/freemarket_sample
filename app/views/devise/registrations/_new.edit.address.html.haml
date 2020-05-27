@@ -7,24 +7,24 @@
     %br/
     = m.text_field :address_last_name, placeholder: '例)安倍', class: "field-input__name--left"
     = m.text_field :address_first_name, placeholder: '例)晋三', class: "field-input__name--right"
-    - if resource.errors.include?(:address_last_name)
+    - if resource.address.errors.include?(:address_last_name)
       %br/
-      %p.field-error= resource.errors.full_messages_for(:address_last_name).first
-    - if resource.errors.include?(:address_first_name)
+      %p.field-error= resource.address.errors.full_messages_for(:address_last_name).first
+    - if resource.address.errors.include?(:address_first_name)
       %br/
-      %p.field-error= resource.errors.full_messages_for(:address_first_name).first
+      %p.field-error= resource.address.errors.full_messages_for(:address_first_name).first
   .field
     %label.field--title お名前かな(全角)
     %span.field--span 必須
     %br/
     = m.text_field :address_last_name_kana, placeholder: '例)あべ', class: "field-input__name--left"
     = m.text_field :address_first_name_kana, placeholder: '例)しんぞう', class: "field-input__name--right"
-    - if resource.errors.include?(:address_last_name_kana)
+    - if resource.address.errors.include?(:address_last_name_kana)
       %br/
-      %p.field-error= resource.errors.full_messages_for(:address_last_name_kana).first
-    - if resource.errors.include?(:address_first_name_kana)
+      %p.field-error= resource.address.errors.full_messages_for(:address_last_name_kana).first
+    - if resource.address.errors.include?(:address_first_name_kana)
       %br/
-      %p.field-error= resource.errors.full_messages_for(:address_first_name_kana).first
+      %p.field-error= resource.address.errors.full_messages_for(:address_first_name_kana).first
   .field
     %label.field--title 郵便番号
     %span.field--span 必須
