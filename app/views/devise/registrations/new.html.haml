@@ -3,6 +3,8 @@
   .new-registration__main
     %h2.new-registration__main__top 新規会員登録
     = form_with model: @user, url: user_registration_path,  class: 'user__form',local: true do |f|
+      %h2.field--group
+        ユーザー情報
       .field
         = f.fields_for :profile, @user.profile do |p|
           %label.field--title ニックネーム
@@ -31,5 +33,6 @@
         - if resource.errors.include?(:password_confirmation)
           %p.field-error= resource.errors.full_messages_for(:password_confirmation).first
       = render "new.edit",  f: f
+      = render "new.edit.address",  f: f
       .field
         = f.submit "入力完了", class: "submit"

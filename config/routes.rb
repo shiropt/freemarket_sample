@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users,
     controllers: { registrations: 'users/registrations',
     sessions: 'users/sessions' }
+  end
   resources :items do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
