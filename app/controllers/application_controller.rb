@@ -46,6 +46,7 @@ class ApplicationController < ActionController::Base
     Rails.env.production?
   end
 
+  # ベーシック認証（ユーザー名とパスはcredential.ymlで保管）
   def basic_auth
     authenticate_or_request_with_http_basic do |username, password|
       username == Rails.application.credentials[:basic_auth][:user] &&

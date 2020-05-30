@@ -2,7 +2,9 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:update, :edit, :show,:destroy]
   before_action :set_category, only: [:new, :update, :edit, :show]
 
+  # 商品一覧ページ
   def index
+    # 購入日降順、購入済みの商品は非表示にする
     @parents = Category.where(ancestry: nil)
     @ladies = Item.where(purchased_info_id: nil).where(category_id: 1..250).includes(:images, :purchased_info).order("created_at DESC").limit(5)
     @mens = Item.where(purchased_info_id: nil).where(category_id: 251..381).includes(:images, :purchased_info).order("created_at DESC").limit(5)
@@ -74,6 +76,7 @@ class ItemsController < ApplicationController
     end
   end
 
+  # 商品検索機能
   def search
     @parents = Category.where(ancestry: nil)
     @items = Item.search(params[:keyword])

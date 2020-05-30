@@ -1,5 +1,6 @@
 class CategoryController < ApplicationController
   def index
+    # カテゴリー別、ブレンド別表示
     @parents = Category.where(ancestry: nil)
     @ladys = Category.find_by(name: "レディース")
     @mens = Category.find_by(name: "メンズ")

@@ -29,6 +29,7 @@
                               = link_to grandchild.name, category_path(grandchild.id), class: "top-link"
         %li.lists-left__brand
           ブランド
+      -# ログイン、未ログインで表記を変更    
       - if user_signed_in?
         %ul.lists-right
           %li.lists-right__login

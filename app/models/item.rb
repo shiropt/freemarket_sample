@@ -32,6 +32,7 @@ class Item < ApplicationRecord
   def self.search(search)
     # searchの中身がなければ全てを取得する
     returen Item.all unless search
+    # 商品名の曖昧検索
     Item.where("name LIKE(?)", "%#{search}%")
   end
 end
