@@ -37,20 +37,26 @@
           margin-bottom: 5px;
           width: calc(100% - 26px);
           height: 36px;
-        }
-        .search-input {
-          width: 100%;
-          padding: 0 0 0 5px;
-        }
-        .search-icon {
-          background-color: $main-color;
-          height: 36px;
-          width: 36px;
-          border: none;
-          padding: 0;
-          .icon {
-            height: 20px;
-            width: 20px;
+          .search-input {
+            width: 100%;
+            padding: 0 0 0 5px;
+          }
+          .search-btn {
+            font-size: 20px;
+            color: white;
+            position: relative;
+            .search-icon {
+              background-color: $main-color;
+              height: 36px;
+              width: 36px;
+              border: none;
+              padding: 0;
+            }
+            .fas {
+              position: absolute;
+              top: 25%;
+              left: 25%;
+            }
           }
         }
       }

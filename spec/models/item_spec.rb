@@ -53,4 +53,19 @@ RSpec.describe Item, type: :model do
     end
 
   end
+
+  # 検索機能単体テスト
+  # describe "#search" do
+  #   before do 
+  #     @item = build(:item)
+  #   end
+  #   context "search by 'マスク'" do
+  #     it "returns @item" do
+  #       expect(Item.search("マスク")).to include(@item)
+  #     end
+  #   end
+  # end
+
+
+
 end
