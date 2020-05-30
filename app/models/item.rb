@@ -27,7 +27,7 @@ class Item < ApplicationRecord
   has_one :purchased_info
   has_many :comments
   has_many :images, foreign_key: :item_id, dependent: :destroy
-  accepts_nested_attributes_for :images
+  accepts_nested_attributes_for :images,allow_destroy: true
 
   def self.search(search)
     # searchの中身がなければ全てを取得する

@@ -1,14 +1,12 @@
 @mixin field-input() {
-  height: 50px;
-  width: 100%;
+  width: 380px;
   margin-top: 7px;
   padding: 10px;
   border: solid 1px  rgb(205, 205, 205);
   border-radius: 4px;
 }
 @mixin field-input-name() {
-  height: 50px;
-  width: 47%;
+  width: 40%;
   margin-top: 10px;
   padding: 10px;
   border: solid 1px  rgb(205, 205, 205);
@@ -22,12 +20,15 @@
   color: white;
 }
 @mixin select-btn(){
-  height: 50px;
+  height: 45px;
   margin-top: 7px;
   padding: 10px 16px 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
   background: #fff;
+}
+.field--group{
+  text-align: center;
 }
 // p要素===========================
 .password--attention {
@@ -142,8 +143,7 @@
         }
       }
       .submit{
-        height: 50px;
-        width: 100%;
+        width: 380px;
         font-size: 20px;
         color: white;
         margin-top: 7px;

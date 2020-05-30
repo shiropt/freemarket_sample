@@ -69,12 +69,6 @@ describe User do
       expect(user.errors[:first_name_kana]).to_not match(/\A[ぁ-んー－]+\z/)
     end
 
-    it "genderが無いと登録できないこと" do
-      user = build(:user, gender: nil)
-      user.valid?
-      expect(user.errors[:gender]).to include("を入力してください")
-    end
-
     it "birth_dayが無いと登録できないこと" do
       user = build(:user, birth_day: nil)
       user.valid?

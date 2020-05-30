@@ -60,12 +60,18 @@
             本人情報変更
             = icon('fas', 'chevron-right', class:'chevron')
       %li
-        = link_to "#" do
+        = link_to "/users/#{current_user.id}/address_edit" do
+
+          %p.table-item
+            送付先住所変更
+            = icon('fas', 'chevron-right', class:'chevron')
+      %li
+        = link_to cards_path do
           %p.table-item
             支払い方法
             = icon('fas', 'chevron-right', class:'chevron')
       %li
-        = link_to destroy_user_session_path do
+        = link_to destroy_user_session_path, method: :delete do
           %p.table-item
             ログアウト
             = icon('fas', 'chevron-right', class:'chevron')
@@ -73,9 +79,7 @@
     = link_to "#" do
       .mypage__contents__name
         = image_tag("/material/icon/member_photo_noimage_thumb.png",height:60, width:60)
-        %h2 
-          = current_user.last_name
-          = current_user.first_name
+        %h2=current_user.profile.nickname
         .number
           評価
           %span.bold 0

@@ -1,3 +1,5 @@
+%h2.field--group
+  本人確認情報
 .field
   %label.field--title お名前(全角)
   %span.field--span 必須
@@ -24,7 +26,7 @@
     %p.field-error= resource.errors.full_messages_for(:first_name_kana).first
 .field
   %label.field--title 性別
-  %span.field--span 必須
+  %span.field--span--optional 任意
   %br/
   = f.radio_button :gender, 1, class: "radio_btn"
   = f.label "男 性", for: "user_gender_1"
@@ -41,40 +43,3 @@
   != sprintf(f.date_select(:birth_day, prompt:"--", class: 'fa', use_month_numbers: true,start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年 ','月 ')+'日'
   - if resource.errors.include?(:birth_day)
     %p.field-error= resource.errors.full_messages_for(:birth_day).first
-= f.fields_for :address, @user.address do |m|
-  .field
-    %label.field--title 郵便番号
-    %span.field--span 必須
-    = m.text_field :post_code, placeholder: '例)1234567',maxlength:'7', class: "field-input"
-    - if resource.address.errors.include?(:post_code)
-      %p.field-error= resource.address.errors.full_messages_for(:post_code).first
-  .field__prefecture
-    %label.field--title 都道府県
-    %span.field--span 必須
-    = m.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--", class: "field-input__prefecture"
-    - if resource.address.errors.include?(:prefecture_id)
-      %p.field-error= resource.address.errors.full_messages_for(:prefecture_id).first
-  .field
-    %label.field--title 市町村
-    %span.field--span 必須
-    = m.text_field :city, placeholder: '例)渋谷区', class: "field-input"
-    - if resource.address.errors.include?(:city)
-      %p.field-error= resource.address.errors.full_messages_for(:city).first
-  .field
-    %label.field--title 番地
-    %span.field--span 必須
-    = m.text_field :block, placeholder: '道玄坂1-1-1', class: "field-input"
-    - if resource.address.errors.include?(:block)
-      %p.field-error= resource.address.errors.full_messages_for(:block).first
-  .field
-    %label.field--title 建物名
-    %span.field--span--optional 任意
-    = m.text_field :building, placeholder: '例)フォンティスビル', class: "field-input"
-    - if resource.address.errors.include?(:building)
-      %p.field-error= resource.address.errors.full_messages_for(:building).first
-  .field
-    %label.field--title 電話番号
-    %span.field--span--optional 任意
-    = m.text_field :telephone_number, placeholder: '例)08012345678',maxlength:'11', class: "field-input"
-    - if resource.address.errors.include?(:telephone_number)
-      %p.field-error= resource.address.errors.full_messages_for(:telephone_number).first

@@ -10,6 +10,10 @@ ja:
         block: 番地
         building: 建物名
         telephone_number: 電話番号
+        address_last_name: 妙
+        address_first_name: 名
+        address_last_name_kana: 妙(かな)
+        address_first_name_kana: 名(かな)
       user:
         last_name: 妙
         first_name: 名
