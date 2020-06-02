@@ -316,42 +316,46 @@ others_8.children.create([{name: "オフィス用品一般"},{name: "オフィ�
 others_9 = others.children.create(name: "その他")
 others_9.children.create([{name: "すべて"}])
 
-# 5.times do |n| 
-#   gimei = Gimei.new
+5.times do |n| 
+  gimei = Gimei.new
 
-# User.create!(
-#    email: Faker::Internet.email,
-#    password: '747474g',
-#    password_confirmation: '747474g',
-#    last_name: gimei.last.kanji,
-#    first_name: gimei.first.kanji,
-#    last_name_kana: gimei.last.hiragana,
-#    first_name_kana: gimei.first.hiragana,
-#    gender: 1,
-#    birth_day: 19770201
-#    )
+User.create!(
+   email: Faker::Internet.email,
+   password: '747474g',
+   password_confirmation: '747474g',
+   last_name: gimei.last.kanji,
+   first_name: gimei.first.kanji,
+   last_name_kana: gimei.last.hiragana,
+   first_name_kana: gimei.first.hiragana,
+   gender: 1,
+   birth_day: 19770201
+   )
 
-#    Profile.create!(
-#      nickname: Faker::JapaneseMedia::OnePiece.character,
-#      profile: Faker::Lorem.paragraphs,
-#      image: File.open('./app/assets/images/profile.png'),
-#      user_id: User.find(n+1).id
-#      )
-#      Address.create!(
-#        post_code: 1234567,
-#        prefecture_id: 1,
-#        city: Gimei.city.kanji ,
-#        block: Gimei.town.kanji,
-#        building: Gimei.town.to_s,
-#        telephone_number: 99099999999,
-#        user_id: User.find(n+1).id
-#        )
-  # end
+   Profile.create!(
+     nickname: Faker::JapaneseMedia::OnePiece.character,
+     profile: Faker::Lorem.paragraphs,
+     image: File.open('./app/assets/images/profile.png'),
+     user_id: User.find(n+1).id
+     )
+     Address.create!(
+       post_code: 1234567,
+       prefecture_id: 1,
+       city: Gimei.city.kanji ,
+       block: Gimei.town.kanji,
+       building: Gimei.town.to_s,
+       telephone_number: 99099999999,
+       address_last_name:Gimei.city.kanji ,
+       address_first_name:Gimei.city.kanji ,
+       address_last_name_kana:Gimei.city.hiragana ,
+       address_first_name_kana:Gimei.city.hiragana ,
+       user_id: User.find(n+1).id
+       )
+  end
   
-  Image.create!(
-    image: File.open('./app/assets/images/profile.png'),
-    item_id: 1
-    ) 
+  # Image.create!(
+  #   image: File.open('./app/assets/images/profile.png'),
+  #   item_id: 1
+  #   ) 
   # Item.create!(
   #   name: "iphone12",
   #     description: "iPhone 11 Pro ミッドナイトグリーン 64 GB SIMフリー
