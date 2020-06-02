@@ -89,7 +89,7 @@
       .favorites{
         margin-top: 24px;
         width:150px;
-        height: 30px;
+        height: 45px;
         line-height: 30px;
         font-size:14px;
         text-align:center;
@@ -103,10 +103,10 @@
         opacity: 0.5;
       }
 
-      .notice{
+      .notice-icon{
         margin-top: 24px;
         width:180px;
-        height: 30px;
+        height: 45px;
         line-height: 30px;
         font-size:14px;
         text-align:center;
@@ -212,6 +212,7 @@
       text-align:center;
       color: white;
       border-radius: 100px;
+      border: none;
     
     }
   }
