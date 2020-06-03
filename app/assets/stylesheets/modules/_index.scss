@@ -13,7 +13,7 @@
   padding: 0 60px;
   &__inner {
     margin: 0 auto;
-    width: 1040px;
+    width: 100%;
     padding: 15px 0 0;
     &__main {
       display: flex;
@@ -29,9 +29,8 @@
         }
       }
       .search-box {
-        margin-left: auto;
         display: flex;
-        width: 870px;
+        width: 80%;
         form {
           display: flex;
           margin-bottom: 5px;
@@ -79,13 +78,13 @@
           width: 70px;
           position: relative;
           cursor: pointer;
+          z-index: 1;
         }
         .parent, .child, .grandchild{
           background-color: #fff;
           visibility:hidden;
           width: 230px;
-          height: 700px;
-          z-index: 1;
+          height: 1000px;
         }
         .parent-content:hover{
 
@@ -139,7 +138,7 @@
     width: 100%;
     background-image: url("/material/pict/bg-mainVisual-pict_pc.jpg");
     &__content {
-      width: 1280px;
+      width: 100%;
       margin: 0 auto;
       padding: 35px 0 0;
       .subtitle {
@@ -172,7 +171,7 @@
     }
     .lists {
       @include center();
-      width: 1020px;
+      width: 100%;
       .list {
         width: 30%;
         text-align: left;
@@ -227,7 +226,7 @@
     &__content {
       margin: 0 auto;
       text-align: left;
-      width: 1040px;
+      width: 100%;
       .subtitle {
         @include shadow();
         font-size: 27px;
@@ -260,7 +259,7 @@
     }
     .lists {
       @include center();
-      width: 1060px;
+      width: 100%;
       .list {
         width: calc(1 / 3 * 100%);
         text-align: center;
@@ -310,7 +309,7 @@
         }
       }
       &__lists {
-        width: 1000px;
+        width: 100%;
         margin: 26px auto;
         display: flex;
         justify-content: center;
@@ -435,6 +434,7 @@
   right: 32px;
   position: fixed;
   padding: 15px;
+  z-index: 1;
   &__text {
     color: #fff;
     display: block;
