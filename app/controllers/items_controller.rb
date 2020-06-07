@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:update, :edit, :show,:destroy]
   before_action :set_category, only: [:new, :update, :edit, :show]
+  before_action :move_to_index, except: [:index,:show]
 
   def index
     @parents = Category.where(ancestry: nil)
@@ -108,7 +109,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
-    # @imgs = Image.where(item_id: params[:id]) 
-    # binding.pry
+  end
+
+  def move_to_index
+    redirect_to action: :index unless @item.user.id==current_user.id
   end
 end
